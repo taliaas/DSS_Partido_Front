@@ -36,10 +36,12 @@
         <q-separator></q-separator>
         <div class="btn-bottom">
           <ConfigLink v-for="cof in listSecun" :key="cof.title" v-bind="cof" @dialog-open="handleDialogOpen" />
-          <q-btn round color="primary" icon="settings"> <q-tooltip>{{ $t("btn4")
-              }}</q-tooltip></q-btn>
-          <q-btn round color="primary" icon="person"> <q-tooltip>{{ $t("btn5")
-              }}</q-tooltip></q-btn>
+          <q-btn class="btn" round color="primary" icon="settings">
+            <q-tooltip>{{ $t("btn4") }}</q-tooltip>
+          </q-btn>
+          <q-btn class="btn" round color="primary" icon="person">
+            <q-tooltip>{{ $t("btn5") }}</q-tooltip>
+          </q-btn>
           <DialogComp :visible="showConfigDialog" />
         </div>
       </q-scroll-area>
@@ -142,6 +144,10 @@ const handleDialogOpen = (title) => {
 
 .btn-bottom {
   flex-direction: column;
+}
+
+.btn {
+  margin: 5px;
 }
 
 .selected {
