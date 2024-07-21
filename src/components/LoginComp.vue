@@ -2,15 +2,15 @@
 
   <q-form class="container">
     <div class="q-pa-md" style="max-width: 400px;">
-      <h2 style="margin-bottom: 60px;">Iniciar Sesión</h2>
-      <q-input class="em" clearable filled v-model="email" label="Correo *" lazy-rules suffix="@cujae.edu.cu"
+      <h2 style="margin-bottom: 60px;">{{ $t("log") }}</h2>
+      <q-input class="em" clearable filled v-model="email" :label="$t('email')" lazy-rules suffix="@cujae.edu.cu"
         :rules="[val => val && val.length > 0 || 'Por favor introduce tu correo']">
         <template v-slot:prepend>
           <q-icon name="email" />
         </template>
       </q-input>
 
-      <q-input class="pw" filled v-model="password" type="password" label="Contraseña *" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
+      <q-input class="pw" filled v-model="password" type="password" :label="$t('pass')" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
       val => val && val.length < 8 || 'Solo se admiten 8 caracteres'
       ]">
 
@@ -20,8 +20,8 @@
       </q-input>
     </div>
     <div style=" flex-direction: row; margin-left: 80px; width: 400px;">
-      <a href="http://localhost:9000/login/password">¿Olvido la contraseña?</a>
-      <q-btn class="butt" label="Iniciar Sesión" rounded type="submit" color="primary" @click="onsubmit" />
+      <a href="http://localhost:9000/login/password">{{ $t('link') }}</a>
+      <q-btn class="butt" :label="$t('log')" rounded type="submit" color="primary" @click="onsubmit" />
     </div>
   </q-form>
 

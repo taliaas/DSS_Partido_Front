@@ -10,5 +10,12 @@
   "main": "Home",
   "p1": "Proceedings",
   "p2": "Balance",
-  "p3": "Statistics"
+  "p3": "Statistics",
+  "log": "Login",
+  "sign": "Sign up",
+  "about": "About",
+  "name": "Name *",
+  "email": "Email *",
+  "pass": "Password *",
+  "link": "Forgot your password?"
 }

@@ -17,7 +17,7 @@
         <q-btn class="bg" round dense flat color="white" icon="logout" @click="alert = true">
           <q-tooltip>{{ $t("close") }}</q-tooltip>
         </q-btn>
-
+        <CloseDialog></CloseDialog>
       </q-toolbar>
     </q-header>
 
@@ -35,8 +35,7 @@
         </q-list>
         <q-separator></q-separator>
         <div class="btn-bottom">
-          <ConfigLink v-for="cof in listSecun" :key="cof.title" v-bind="cof" @dialog-open="handleDialogOpen" />
-          <q-btn class="btn" round color="primary" icon="settings">
+          <q-btn class="btn" @click="showConfigDialog = true" round color="primary" icon="settings">
             <q-tooltip>{{ $t("btn4") }}</q-tooltip>
           </q-btn>
           <q-btn class="btn" round color="primary" icon="person">
@@ -44,6 +43,7 @@
           </q-btn>
           <DialogComp :visible="showConfigDialog" />
         </div>
+
       </q-scroll-area>
     </q-drawer>
 
@@ -59,7 +59,6 @@
 <script setup>
 import { ref } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue'
-import ConfigLink from 'src/components/ConfigLink.vue';
 import DialogComp from 'src/components/DialogComp.vue';
 import { useI18n } from "vue-i18n"
 const { t, locale } = useI18n();
@@ -72,7 +71,6 @@ const miniState = ref(true);
 const account = ref(false); //q-dialog
 const drawer = ref(false);
 const alert = ref(false);
-
 
 const linksList = [
   {
@@ -104,16 +102,15 @@ const change = (lang) => {
   selectedLanguage.value = lang;
 }
 
-const handleDialogOpen = (title) => {
-  if (title === "Configuración") {
-    showConfigDialog.value = true;
-  }
-  else
-    account.value = true;
-};
 </script>
 
 <style scoped>
+.btn-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
 .menu-list {
   height: 250px;
   display: flex;
@@ -147,7 +144,7 @@ const handleDialogOpen = (title) => {
 }
 
 .btn {
-  margin: 5px;
+  margin: 7px;
 }
 
 .selected {

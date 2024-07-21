@@ -2,23 +2,23 @@
   <div class="container">
     <q-form>
       <div class="q-pa-md" style="max-width: 400px;">
-        <h2 style="margin-bottom: 60px;">Crear cuenta</h2>
+        <h2 style="margin-bottom: 60px;">{{ $t('sign')  }}</h2>
 
-        <q-input class="nm" clearable filled v-model="name" label="Nombre *"
+        <q-input class="nm" clearable filled v-model="name" :label="$t('name')"
           :rules="[val => val && val.length > 0 || 'Por favor introduce tu nombre']">
           <template v-slot:prepend>
             <q-icon name="person" />
           </template>
         </q-input>
 
-        <q-input class="em" clearable filled v-model="email" label="Correo *" lazy-rules suffix="@cujae.edu.cu"
+        <q-input class="em" clearable filled v-model="email" :label="$t('email')" lazy-rules suffix="@cujae.edu.cu"
           :rules="[val => val && val.length > 0 || 'Por favor introduce tu correo']">
           <template v-slot:prepend>
             <q-icon name="email" />
           </template>
         </q-input>
 
-        <q-input class="pw" filled v-model="password" type="password" label="Contraseña *" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
+        <q-input class="pw" filled v-model="password" type="password" :label="$t('pass')" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
         val => val && val.length <= 8 || 'Solo se admiten 8 caracteres'
         ]">
 
@@ -28,7 +28,7 @@
         </q-input>
       </div>
       <div style=" flex-direction: row; margin-left: 80px; width: 400px;">
-        <q-btn class="butt" label="Registrar" type="submit" color="primary" />
+        <q-btn class="butt" :label="$t('sign')" type="submit" color="primary" />
       </div>
 
     </q-form>

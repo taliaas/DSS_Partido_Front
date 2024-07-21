@@ -7,8 +7,15 @@
   "btn4": "Configuraciones",
   "btn5": "Cuenta de usuario",
   "close": "Cerrar sesión",
-  "main": "Principal",
+  "main": "Inicio",
   "p1": "Actas",
   "p2": "Balance",
-  "p3": "Estadística"
+  "p3": "Estadística",
+  "log": "Iniciar Sesión",
+  "sign": "Crear cuenta",
+  "about": "Acerca",
+  "name": "Nombre *",
+  "email": "Correo *",
+  "pass": "Contraseña *",
+  "link": " ¿Olvido la contraseña?"
 }
