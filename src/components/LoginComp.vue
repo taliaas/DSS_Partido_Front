@@ -1,5 +1,4 @@
 <template>
-
   <q-form class="container">
     <div class="q-pa-md" style="max-width: 400px;">
       <h2 style="margin-bottom: 60px;">{{ $t("log") }}</h2>
@@ -24,7 +23,6 @@
       <q-btn class="butt" :label="$t('log')" rounded type="submit" color="primary" @click="onsubmit" />
     </div>
   </q-form>
-
 </template>
 
 <script setup>

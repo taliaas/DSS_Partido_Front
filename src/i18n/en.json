@@ -1,11 +1,12 @@
 {
   "welcome": "Welcome ActaStats",
   "men": "Menu",
-  "btn1": "Proceedings",
+  "btn1": "Minutes",
   "btn2": "Search",
   "btn3": "Download",
   "btn4": "Settings",
   "btn5": "Profile",
+  "btn7": "Minutes of political circle meeting",
   "close": "Log out",
   "main": "Home",
   "p1": "Proceedings",
@@ -17,5 +18,17 @@
   "name": "Name *",
   "email": "Email *",
   "pass": "Password *",
-  "link": "Forgot your password?"
+  "link": "Forgot your password?",
+  "cerrar": "Are you sure you want to close?",
+  "user": "Users",
+  "r1": "Regular meeting",
+  "nucleo": "Core *",
+  "area": "Area *",
+  "pres": "Present *",
+  "aus": "Absent *",
+  "asis": "Attendance",
+  "miembros": "Core members",
+  "oder": "Agenda *",
+  "des": "Development *",
+  "agree": "Agreements *"
 }

@@ -15,7 +15,7 @@ import DownloadIndex from "src/components/DownloadIndex.vue";
 const view = ref(false);
 
 function onsubmit() {
-  window.location.href = "http://localhost:9000/index/actas";
+  window.location.href = "http://localhost:9000/index/actaordinaria";
 }
 
 </script>

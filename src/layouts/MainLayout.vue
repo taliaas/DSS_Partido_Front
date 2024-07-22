@@ -14,10 +14,10 @@
 
         <q-separator vertical inset color="white" />
 
-        <q-btn class="bg" round dense flat color="white" icon="logout" @click="alert = true">
+        <q-btn class="bg" round flat color="white" icon="logout" @click="alert = true">
           <q-tooltip>{{ $t("close") }}</q-tooltip>
         </q-btn>
-        <CloseDialog></CloseDialog>
+        <CloseDialog :value="alert" ></CloseDialog>
       </q-toolbar>
     </q-header>
 
@@ -58,8 +58,10 @@
 
 <script setup>
 import { ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from 'components/EssentialLink.vue';
+
 import DialogComp from 'src/components/DialogComp.vue';
+import CloseDialog from 'src/components/CloseDialog.vue';
 import { useI18n } from "vue-i18n"
 const { t, locale } = useI18n();
 

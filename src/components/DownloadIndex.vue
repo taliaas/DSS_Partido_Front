@@ -8,16 +8,16 @@
         </q-toolbar>
 
         <q-card-section>
-          <q-input class="busc" label="Buscar" dense color="primary" v-model="filter">
+          <q-input class="busc" :label="$t('btn2')" dense color="primary" v-model="filter">
             <template v-slot:append>
               <q-icon name="search" />
             </template>
           </q-input>
 
           <q-radio v-model="shape" checked-icon="task_alt" unchecked-icon="panorama_fish_eye" val="acta"
-            label="Actas" />
+            :label="$t('btn1')" />
           <q-radio v-model="shape" checked-icon="task_alt" unchecked-icon="panorama_fish_eye" val="rectangle"
-            label="Usuario" />
+          :label="$t('user')"/>
 
         </q-card-section>
 
@@ -38,6 +38,7 @@
 import { ref, computed } from 'vue';
 
 const model = ref(true);
+const filter = ref("");
 const shape = ref('acta');
 const props = defineProps({
   value: Boolean,

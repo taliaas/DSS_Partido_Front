@@ -1,7 +1,7 @@
 <template>
   <div style=" margin: 25px;">
 
-    <q-table flat bordered title="Miembros del núcleo" :rows="rows" :columns="columns" :filter="filter"
+    <q-table flat bordered :title="$t('miembros')" :rows="rows" :columns="columns" :filter="filter"
       :loading="loading" no-data-label="No hay datos" row-key="index" :rows-per-page-options="[0]">
       <template #body-cell-asist>
         <q-td >

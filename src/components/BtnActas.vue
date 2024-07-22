@@ -1,17 +1,17 @@
 <template>
 
   <div class="container">
-    <q-checkbox v-model="teal" label="Añadir acta de círculo político" />
+    <q-checkbox v-model="teal" val="teal" color="primary" :label="$t('btn7')"/>
   </div>
 
   <div class="container">
-    <q-btn type="submit" :loading="submitting" label="Guardar" class="q-mt-md" icon="save" color="primary"
+    <q-btn type="submit" :loading="submitting" outline label="Guardar" class="q-mt-md" icon="save" color="primary"
       @click="save">
       <template v-slot:loading>
         <q-spinner-facebook />
       </template>
     </q-btn>
-    <q-btn label="Cancelar" outline class="q-mt-md" color="primary"></q-btn>
+    <q-btn label="Cancelar" outline class="q-mt-md" color="negative"></q-btn>
   </div>
 </template>
 

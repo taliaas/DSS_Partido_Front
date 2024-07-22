@@ -6,6 +6,7 @@
   "btn3": "Descargar",
   "btn4": "Configuraciones",
   "btn5": "Cuenta de usuario",
+  "btn7": "Acta de círculo político",
   "close": "Cerrar sesión",
   "main": "Inicio",
   "p1": "Actas",
@@ -17,5 +18,17 @@
   "name": "Nombre *",
   "email": "Correo *",
   "pass": "Contraseña *",
-  "link": " ¿Olvido la contraseña?"
+  "link": " ¿Olvido la contraseña?",
+  "cerrar": "¿Estás seguro que desea salir?",
+  "user": "Usuarios",
+  "r1": "Reunión Ordinaria",
+  "nucleo": "Núcleo *",
+  "area": "Área *",
+  "pres": "Presente *",
+  "aus": "Ausentes *",
+  "asis": "Asistencia",
+  "miembros": "Miembros del núcleo ",
+  "oder": "Orden del Día *",
+  "des": "Desarrollo *",
+  "agree": "Acuerdos * "
 }
