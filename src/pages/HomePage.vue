@@ -1,14 +1,50 @@
 <template>
   <q-page>
     <q-img class="cp" src="src/img/indexPage.jpg">
-      <div class="absolute-full text-subtitle2 flex flex-center" style="font-size: 66px;">{{ $t("welcome") }}</div>
+      <div class="absolute-full" align="center">
+        <LoginComp style="width: 600px; " />
+      </div>
     </q-img>
   </q-page>
 </template>
 
+<script setup>
+import ImgLogin from "src/components/ImgLogin.vue";
+import LoginComp from "src/components/LoginComp.vue";
+
+defineOptions({
+  name: 'LoginPage'
+});
+</script>
+
 <style scoped>
-.cp{
-  height: 638px;
+.tab {
+  font-size: 26px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #399139;
+}
+
+.comp {
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cp {
+  display: flex;
+  height: 687px;
+}
+
+.flexcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 60px;
 }
 </style>
-
