@@ -1,11 +1,11 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout>
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn flat label="ActaStats" href="/" />
         <q-space />
         <q-tabs align="left">
-          <q-route-tab to="/autentication" :label="$t('sign')" />
+
           <q-btn flat toggle-color="lime-13" @click="change('en')" label="EN"
             :class="{ selected: selectedLanguage === 'en' }">
             <q-tooltip>English </q-tooltip>
@@ -22,7 +22,6 @@
       </q-toolbar>
 
     </q-header>
-
     <q-page-container>
       <router-view />
     </q-page-container>

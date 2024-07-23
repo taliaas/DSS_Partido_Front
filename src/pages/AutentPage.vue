@@ -1,14 +1,14 @@
 <template>
-  <q-page class="container">
-    <div class="comp">
-      <AutentComp ></AutentComp>
-      <ImgAutent ></ImgAutent>
-    </div>
+  <q-page>
+    <q-img class="cp" src="src/img/indexPage.jpg">
+      <div class="absolute-full " align="center">
+          <AutentComp style="width: 600px; max-height: 600px; " />
+      </div>
+    </q-img>
   </q-page>
 </template>
 
 <script setup>
-import ImgAutent from "src/components/ImgAutent.vue";
 import AutentComp from "src/components/AutentComp.vue";
 
 defineOptions({
@@ -21,5 +21,10 @@ defineOptions({
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
+}
+
+.cp {
+  display: flex;
+  height: 687px;
 }
 </style>

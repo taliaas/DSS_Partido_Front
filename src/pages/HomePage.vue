@@ -1,15 +1,14 @@
 <template>
   <q-page>
     <q-img class="cp" src="src/img/indexPage.jpg">
-      <div class="absolute-full" align="center">
-        <LoginComp style="width: 600px; " />
+      <div class="absolute-full " align="center">
+          <LoginComp style="width: 600px; max-height: 600px; " />
       </div>
     </q-img>
   </q-page>
 </template>
 
 <script setup>
-import ImgLogin from "src/components/ImgLogin.vue";
 import LoginComp from "src/components/LoginComp.vue";
 
 defineOptions({
