@@ -67,6 +67,11 @@ const routes = [
         name: "updser",
         component: () => import("src/pages/UpdateUser.vue"),
       },
+      {
+        path: "calendar",
+        name: "calendar",
+        component: () => import("src/pages/CalendarPage.vue"),
+      }
     ],
   },
 

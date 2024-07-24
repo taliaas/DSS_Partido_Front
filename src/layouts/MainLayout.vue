@@ -133,6 +133,11 @@ const linksList = [
     icon: "timeline",
     link: "/index/graph",
   },
+  {
+    title: "Calendar",
+    icon: "event",
+    link: "/index/calendar"
+  }
 ]
 
 const showConfigDialog = ref(false); // Variable para controlar la visibilidad del diálogo
@@ -152,7 +157,7 @@ const change = (lang) => {
 }
 
 .menu-list {
-  height: 250px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
