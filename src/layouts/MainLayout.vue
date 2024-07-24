@@ -4,20 +4,69 @@
       <q-toolbar>
         <q-toolbar-title>ActaStats</q-toolbar-title>
 
-        <q-btn flat toggle-color="lime-13" @click="change('en')" label="EN"
-          :class="{ selected: selectedLanguage === 'en' }">
-          <q-tooltip>English </q-tooltip>
-        </q-btn>
-        <q-btn class="id" flat @click="change('es')" label="ES" :class="{ selected: selectedLanguage === 'es' }">
-          <q-tooltip>Español</q-tooltip>
-        </q-btn>
+        <q-tabs align="left">
+          <q-btn-dropdown dense flat rounded icon="translate">
+            <q-list>
+              <q-item clickable v-close-popup @click="change('eS')">
+                <q-item-section>
+                  <q-item-label>ES</q-item-label>
+                </q-item-section>
+              </q-item>
 
-        <q-separator vertical inset color="white" />
+              <q-item clickable v-close-popup @click="change('en')">
+                <q-item-section>
+                  <q-item-label>EN</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
 
+        </q-tabs>
+        <q-btn-dropdown flat dense icon="widgets" dropdown-icon="none">
+          <q-list>
+            <q-item>
+              <q-item-section side>
+                  <q-icon name="dashboard" size="xs" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ $t("dash") }}</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-close-popup @click="showConfigDialog = true">
+              <q-item-section side>
+                <q-icon name="settings" size="sm" class="text-primary rounded-borders" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ $t("btn4") }}</q-item-label>
+              </q-item-section>
+
+            </q-item>
+
+            <q-item clickable v-close-popup @click="showConfigDialog = true">
+              <q-item-section side>
+                <q-icon name="person" size="sm" class="text-primary rounded-borders" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ $t("btn5") }}</q-item-label>
+              </q-item-section>
+
+              <DialogComp :visible="showConfigDialog" />
+            </q-item>
+
+            <q-item clickable v-close-popup @click="showConfigDialog = true">
+              <q-item-section side>
+                <q-icon name="help" size="sm" class="text-primary rounded-borders" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ $t("help") }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+        <CloseDialog :value="alert"></CloseDialog>
         <q-btn class="bg" round flat color="white" icon="logout" @click="alert = true">
           <q-tooltip>{{ $t("close") }}</q-tooltip>
         </q-btn>
-        <CloseDialog :value="alert" ></CloseDialog>
       </q-toolbar>
     </q-header>
 
@@ -33,17 +82,6 @@
             <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
           </div>
         </q-list>
-        <q-separator></q-separator>
-        <div class="btn-bottom">
-          <q-btn class="btn" @click="showConfigDialog = true" round color="primary" icon="settings">
-            <q-tooltip>{{ $t("btn4") }}</q-tooltip>
-          </q-btn>
-          <q-btn class="btn" round color="primary" icon="person">
-            <q-tooltip>{{ $t("btn5") }}</q-tooltip>
-          </q-btn>
-          <DialogComp :visible="showConfigDialog" />
-        </div>
-
       </q-scroll-area>
     </q-drawer>
 

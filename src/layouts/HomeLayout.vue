@@ -5,18 +5,25 @@
         <q-btn flat label="ActaStats" href="/" />
         <q-space />
         <q-tabs align="left">
+          <q-btn-dropdown flat rounded icon="translate" >
+            <q-list>
+              <q-item clickable v-close-popup @click="change('eS')">
+                <q-item-section>
+                  <q-item-label>ES</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-btn flat toggle-color="lime-13" @click="change('en')" label="EN"
-            :class="{ selected: selectedLanguage === 'en' }">
-            <q-tooltip>English </q-tooltip>
+              <q-item clickable v-close-popup @click="change('en')">
+                <q-item-section>
+                  <q-item-label>EN</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+          <q-btn flat round icon="info_outline" href="/about" >
+            <q-tooltip> {{ $t('about') }} </q-tooltip>
           </q-btn>
-          <q-btn class="id" flat @click="change('es')" label="ES" :class="{ selected: selectedLanguage === 'es' }">
-            <q-tooltip>Español</q-tooltip>
-          </q-btn>
 
-          <q-separator vertical inset color="white" />
-
-          <q-route-tab to="/about" :label="$t('about')" />
         </q-tabs>
 
       </q-toolbar>

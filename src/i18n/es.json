@@ -30,5 +30,7 @@
   "miembros": "Miembros del núcleo ",
   "oder": "Orden del Día *",
   "des": "Desarrollo *",
-  "agree": "Acuerdos * "
+  "agree": "Acuerdos * ",
+  "dash": "Panel de control",
+  "help": "Ayuda"
 }

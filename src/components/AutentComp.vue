@@ -1,7 +1,7 @@
 <template>
   <div align="center" class="q-gutter-md " style="margin-top: 50px;">
     <q-card class="conteiner"
-      style="background-color: rgba(255,255,255,0.4); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
+      style="background-color: rgba(255,255,255,0.6); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
       <q-form>
         <q-card-section>
           <h2>{{ $t("sign") }}</h2>
@@ -14,7 +14,7 @@
             </template>
           </q-input>
 
-          <q-input class="inp" color="white" clearable filled v-model="email" :label="$t('email')" lazy-rules suffix="@cujae.edu.cu"
+          <q-input class="inp" clearable filled v-model="email" :label="$t('email')" lazy-rules suffix="@cujae.edu.cu"
             :rules="[val => val && val.length > 0 || 'Por favor introduce tu correo']">
             <template v-slot:prepend>
               <q-icon name="email" />

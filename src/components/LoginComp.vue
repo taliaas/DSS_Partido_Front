@@ -1,6 +1,6 @@
 <template>
   <div align="center" class="q-gutter-md " style="margin-top: 50px;">
-    <q-card class="conteiner" style="background-color: rgba(255,255,255,0.4); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
+    <q-card class="conteiner" style="background-color: rgba(255,255,255,0.6); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
       <q-form>
         <q-card-section>
           <h2>{{ $t("log") }}</h2>
