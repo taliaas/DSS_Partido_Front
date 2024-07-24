@@ -15,13 +15,16 @@
         <q-td style="text-align: center">{{ row.fet }}</q-td>
       </template>
       <template #body-cell-view>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="visibility" size="10px" @click="view = !view" /></q-td>
+        <q-td style="text-align: center"><q-btn flat color="secondary" icon="visibility" size="10px"
+            @click="view = !view" /></q-td>
       </template>
       <template #body-cell-update>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="update" size="10px" @click="update = true" /></q-td>
+        <q-td style="text-align: center"><q-btn flat color="secondary" icon="update" size="10px"
+            @click="addProcced" /></q-td>
       </template>
       <template #body-cell-delete>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="delete" size="10px" @click="persistent = true" /></q-td>
+        <q-td style="text-align: center"><q-btn flat color="secondary" icon="delete" size="10px"
+            @click="persistent = true" /></q-td>
       </template>
       <template #body-cell-add>
         <q-td style="text-align: center"><q-btn flat icon="add" size="10px" @click="addProcced" /></q-td>
@@ -38,11 +41,14 @@
     </q-table>
 
     <DetailsActa :value="view" :id="idActa"></DetailsActa>
+    <DeleteComp :value="persistent"></DeleteComp>
   </div>
 </template>
 
 <script setup>
 import DetailsActa from "./DetailsActa.vue";
+import ActaROComp from "./ActaROComp.vue";
+import DeleteComp from "./DeleteComp.vue";
 import { ref } from "vue";
 
 const filter = ref("");

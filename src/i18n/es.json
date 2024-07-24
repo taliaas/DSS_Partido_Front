@@ -32,5 +32,7 @@
   "des": "Desarrollo *",
   "agree": "Acuerdos * ",
   "dash": "Panel de control",
-  "help": "Ayuda"
+  "help": "Ayuda",
+  "remove": "Eliminar",
+  "delete": "¿Estás seguro que desea eliminar?"
 }

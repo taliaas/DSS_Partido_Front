@@ -32,5 +32,7 @@
   "des": "Development *",
   "agree": "Agreements *",
   "dash": "Dashboard",
-  "help": "Help"
+  "help": "Help",
+  "remove": "Delete",
+  "delete": "Are you sure you want to delete?"
 }
