@@ -3,7 +3,7 @@
     <q-dialog v-model="model" persistent>
       <q-card style="width: 300px">
         <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6">{{ $t('remove') }}</div>
+          <div class="text-h6">{{ $t("remove") }}</div>
         </q-card-section>
 
         <q-card-section>
@@ -21,8 +21,6 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useI18n } from "vue-i18n";
-const { t, locale } = useI18n();
 
 const model = ref(true);
 

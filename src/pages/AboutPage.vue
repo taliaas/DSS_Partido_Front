@@ -1,23 +1,26 @@
 <template>
-  <div class="card">
-    <div class="head">
-      <q-img style="width: 350px; height: 300px;" src="src/img/autenticacion.jpg"></q-img>
-      <h1>Todo sobre ActaStats</h1>
-    </div>
+  <div class="q-px-lg q-py-md pp">
+    <q-timeline color="secondary">
+      <q-timeline-entry heading >
+       <div style="font-size: 44px; font-family: Georgia, 'Times New Roman', Times, serif;"> {{ $t("info") }}</div>
+      </q-timeline-entry>
 
-    <h2>¿Qué es ActaStats?</h2>
-    <p class="text">
-      Este proyecto consiste en un sistema innovador y eficiente diseñado
-      para administrar y analizar las actas del Partido Comunista,
-      transformando la gestión de documentos en una herramienta poderosa
-      para el conocimiento y la toma de decisiones. Este sistema no solo
-      facilita la creación y almacenamiento de actas, sino que también
-      integra funcionalidades avanzadas para el seguimiento de la
-      asistencia y el rendimiento de los miembros del partido.
-    </p>
-  </div>
-  <div style="margin: 55px;">
-    <ListCard />
+      <q-timeline-entry :title="$t('what')" icon="done_all">
+        <div style="font-size: 16px;">{{ $t("text1") }}</div>
+      </q-timeline-entry>
+
+      <q-timeline-entry :title="$t('title')" icon="tab">
+        <div style="font-size: 16px;">{{ $t("text2") }}</div>
+      </q-timeline-entry>
+
+      <q-timeline-entry :title="$t('title2')" >
+        <div style="font-size: 16px;">{{ $t("text3") }}</div>
+      </q-timeline-entry>
+
+      <q-timeline-entry :title="$t('title1')" icon="add">
+        <div style="font-size: 16px;">{{ $t("text4") }}</div>
+      </q-timeline-entry>
+    </q-timeline>
   </div>
 </template>
 
@@ -30,6 +33,9 @@ defineOptions({
 </script>
 
 <style scoped>
+.pp{
+  width: 1500px;
+}
 .head {
   flex-direction: row;
   display: flex;
