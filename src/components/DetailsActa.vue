@@ -17,24 +17,26 @@
         </q-bar>
 
         <q-card-section style="margin-left: 25px;">
-          <div class="text-h6">Acta {{ props.id }}</div>
+          <div class="text-h6">{{ $t('acta') }} {{ props.id }}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <q-table class="tg" separator="vertical" disable :rows="rows" :columns="columns" row-key="name" dense hide-bottom></q-table>
+          <q-table flat class="tg" separator="vertical" disable :rows="rows" :columns="columns" row-key="name" dense
+            hide-bottom></q-table>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <h2>Listado de miembros</h2>
-          <q-table class="tg" disable :rows="newRow" :columns="newColumns" row-key="index" dense hide-bottom></q-table>
+          <h2>{{ $t('miembros') }}</h2>
+          <q-table flat class="tg" disable :rows="newRow" :columns="newColumns" row-key="index" dense
+            hide-bottom></q-table>
         </q-card-section>
         <q-card-section class="q-pt-none">
-          <h2>Orden del día</h2>
-          <p>{{ }}</p>
-          <h2>Desarrollo</h2>
-          <p>{{ }}</p>
-          <h2>Acuerdos</h2>
-          <p>{{ }}</p>
+          <h2>{{ $t('oder') }}</h2>
+          <q-card flat class="my-card">{{ loren }}</q-card>
+          <h2>{{ $t('des') }}</h2>
+          <q-card flat class="my-card">{{ loren }}</q-card>
+          <h2>{{ $t('agree') }}</h2>
+          <q-card flat class="my-card">{{ loren }}</q-card>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -60,9 +62,7 @@ const columns = [
   { name: 'fet', align: 'center', label: 'Fecha', field: 'fet' },
   { name: 'hour', align: 'center', label: 'Hora', field: 'hour' },
   { name: 'pres', align: 'center', label: 'Presentes', field: 'pres' },
-  { name: 'aus', align: 'center', label: 'Ausentes', field: 'aus' },
-  { name: 'miembros', align: 'center', label: 'Miembros', field: 'miembros' },
-  { name: 'xciento', align: 'center', label: 'Porciento de asistencia', field: 'xciento' },
+  { name: 'aus', align: 'center', label: 'Ausentes', field: 'aus' }
 ]
 const rows = [
   {
@@ -109,7 +109,7 @@ const seed = [
     asist: 'Presente'
   }
 ]
-
+const loren = "loren"
 // we generate lots of rows here
 let newRow = []
 for (let i = 0; i < 1; i++) {
@@ -143,5 +143,9 @@ function mostrar() {
 h2 {
   font-size: 26px;
   margin-left: 25px;
+}
+
+.my-card {
+  margin: 20px;
 }
 </style>

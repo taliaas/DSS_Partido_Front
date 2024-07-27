@@ -5,22 +5,13 @@
         <q-btn flat label="ActaStats" href="/" />
         <q-space />
         <q-tabs align="left">
-          <q-btn-dropdown flat rounded icon="translate" >
+          <q-btn-dropdown flat rounded icon="translate">
             <q-list>
-              <q-item clickable v-close-popup @click="change('eS')">
-                <q-item-section>
-                  <q-item-label>ES</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="change('en')">
-                <q-item-section>
-                  <q-item-label>EN</q-item-label>
-                </q-item-section>
-              </q-item>
+              <q-btn flat v-close-popup @click="change('es')" :disable="!temp" label="ES" />
+              <q-btn flat v-close-popup @click="change('en')" :disable="temp" label="EN" />
             </q-list>
           </q-btn-dropdown>
-          <q-btn flat round icon="info_outline" href="/about" >
+          <q-btn flat round icon="info_outline" href="/about">
             <q-tooltip> {{ $t('about') }} </q-tooltip>
           </q-btn>
 
@@ -43,11 +34,13 @@ const { t, locale } = useI18n();
 defineOptions({
   name: "HomeLayout",
 });
+const temp = ref(false);
 
 const selectedLanguage = ref("es");
 const change = (lang) => {
   locale.value = lang;
   selectedLanguage.value = lang;
+  temp.value = !temp.value;
 }
 </script>
 

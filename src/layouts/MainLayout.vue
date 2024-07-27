@@ -7,23 +7,15 @@
         <q-tabs align="left">
           <q-btn-dropdown dense flat rounded icon="translate">
             <q-list>
-              <q-item clickable v-close-popup @click="change('eS')">
-                <q-item-section>
-                  <q-item-label>ES</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="change('en')">
-                <q-item-section>
-                  <q-item-label>EN</q-item-label>
-                </q-item-section>
-              </q-item>
+              <q-btn flat v-close-popup @click="change('es')" :disable="!temp" label="ES" />
+              <q-btn flat v-close-popup @click="change('en')" :disable="temp" label="EN" />
             </q-list>
           </q-btn-dropdown>
         </q-tabs>
-        <q-btn round flat color="white" icon="notifications" @click="notif = true">
+        <q-btn round flat color="white" icon="notifications" href="http://localhost:9000/index/notification">
           <q-tooltip>{{ $t("notif") }}</q-tooltip>
         </q-btn>
+
         <CloseDialog :value="alert"></CloseDialog>
         <q-btn class="bg" round flat color="white" icon="logout" @click="alert = true">
           <q-tooltip>{{ $t("close") }}</q-tooltip>
@@ -36,7 +28,7 @@
       @mouseout="miniState = true" :width="200" :breakpoint="500" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
       <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
 
-        <q-list style="height: 625px;">
+        <q-list style="height: 665px;">
           <q-item-label header>
             {{ $t("men") }}
           </q-item-label>
@@ -52,14 +44,6 @@
           </q-item-section>
           <q-item-section>
             <q-item-label>{{ $t("btn5") }}</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup href="http://localhost:9000/index/configuracion">
-          <q-item-section side>
-            <q-icon name="settings" size="sm" class="text-primary rounded-borders" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>{{ $t("btn4") }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-scroll-area>
@@ -88,7 +72,7 @@ const selectedLanguage = ref("es");
 const miniState = ref(true);
 const drawer = ref(false);
 const alert = ref(false);
-const notif = ref(false);
+const temp = ref(false);
 
 const linksList = [
   {
@@ -112,7 +96,7 @@ const linksList = [
     link: "/index/graph",
   },
   {
-    title:  t("p4"),
+    title: t("p4"),
     icon: "event",
     link: "/index/calendar"
   }
@@ -121,6 +105,7 @@ const linksList = [
 const change = (lang) => {
   locale.value = lang;
   selectedLanguage.value = lang;
+  temp.value = !temp.value;
 }
 
 </script>

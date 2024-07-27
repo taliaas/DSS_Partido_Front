@@ -71,6 +71,12 @@ const routes = [
         path: "calendar",
         name: "calendar",
         component: () => import("src/pages/CalendarPage.vue"),
+      },
+      {
+        path: "notification",
+        name: "notification",
+        component: () => import("src/pages/NotificatioPage.vue"),
+
       }
     ],
   },
