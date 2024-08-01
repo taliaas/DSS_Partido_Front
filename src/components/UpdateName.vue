@@ -1,15 +1,15 @@
 <template>
   <div class="comp">
     <q-form @submit.prevent.stop="onSubmit">
-      <h2>{{ $t('create2') }}</h2>
-      <q-input v-model="text1" :label="$t('up2')" lazy-rules suffix="@cujae.edu.cu" :rules="[(val) =>
+      <h2>{{ $t('create1') }}</h2>
+      <q-input v-model="name" clearable :label="$t('up1')" :rules="[(val) =>
         (val !== null && val !== '') ||
-        'Por favor introduce tu nuevo correo',
+        'Por favor introduce tu nuevo nombre',
       (val) =>
         (val.length < 13 && val.length > 4) || 'Por favor introduce entre 5 y 12 caracteres',]" />
 
       <div class="cord">
-        <q-btn type="submit" :label="$t('save')" color="primary" class="full-width"/>
+        <q-btn type="submit" :label="$t('save')" color="primary" class="full-width" />
       </div>
     </q-form>
   </div>
@@ -18,8 +18,7 @@
 <script setup>
 import { ref } from "vue"
 
-const email = ref("")
-const text1 = ref("")
+const name = ref("")
 
 function onSubmit() {
 
@@ -32,10 +31,11 @@ function onSubmit() {
   margin: 25px;
 }
 
+h2 {
+  font-size: 26px;
+}
+
 .cord {
   margin: 10px;
-}
-h2{
-  font-size: 26px;
 }
 </style>

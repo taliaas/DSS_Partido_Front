@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <q-table class="act" title="Balance de las actas" bordered :rows="rows" :columns="columns" row-key="name"
+    <q-table class="act" :title="$t('bala')" bordered :rows="rows" :columns="columns" row-key="name"
       :filter="filter" :loading="loading" @row-click="handleRowClick">
       <template v-slot:top-right>
         <q-input class="busc" flat color="primary" v-model="filter">
@@ -8,7 +8,7 @@
             <q-icon name="search" />
           </template>
         </q-input>
-        <q-btn color="primary" icon-right="archive" label="Exportar" no-caps @click="exportTable" />
+        <q-btn color="primary" icon-right="archive" :label="$t('ex')" no-caps @click="exportTable" />
       </template>
     </q-table>
   </div>

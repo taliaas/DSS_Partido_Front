@@ -1,10 +1,7 @@
 <template>
-  <q-page class="container">
-    <div class="comp">
-      <h2>Modificar correo</h2>
-      <UpdateEmail></UpdateEmail>
-    </div>
-  </q-page>
+  <div>
+
+  </div>
 </template>
 
 <script setup>
@@ -15,8 +12,5 @@ defineOptions({
 </script>
 
 <style scoped>
-h2 {
-  font-size: 26px;
-  margin: 25px;
-}
+
 </style>

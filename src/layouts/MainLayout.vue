@@ -13,12 +13,12 @@
           </q-btn-dropdown>
         </q-tabs>
         <q-btn round flat color="white" icon="notifications" href="http://localhost:9000/index/notification">
-          <q-tooltip>{{ $t("notif") }}</q-tooltip>
+          <q-tooltip>{{ t("notif") }}</q-tooltip>
         </q-btn>
 
         <CloseDialog :value="alert"></CloseDialog>
         <q-btn class="bg" round flat color="white" icon="logout" @click="alert = true">
-          <q-tooltip>{{ $t("close") }}</q-tooltip>
+          <q-tooltip>{{ t("close") }}</q-tooltip>
         </q-btn>
       </q-toolbar>
 
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 import CloseDialog from 'src/components/CloseDialog.vue';
 import { useI18n } from "vue-i18n"

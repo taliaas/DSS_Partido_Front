@@ -7,33 +7,37 @@
           <h2>{{ $t("sign") }}</h2>
         </q-card-section>
         <q-card-section>
-          <q-input class="inp" clearable filled v-model="name" :label="$t('name')"
+          <q-input class="inp" clearable filled v-model="name" color="dark" :label="$t('name')"
             :rules="[val => val && val.length > 0 || 'Por favor introduce tu nombre']">
             <template v-slot:prepend>
               <q-icon name="person" />
             </template>
           </q-input>
 
-          <q-input class="inp" clearable filled v-model="email" :label="$t('email')" lazy-rules suffix="@cujae.edu.cu"
-            :rules="[val => val && val.length > 0 || 'Por favor introduce tu correo']">
+          <q-input class="inp" clearable filled v-model="email" color="dark" :label="$t('email')" lazy-rules
+            suffix="@cujae.edu.cu" :rules="[val => val && val.length > 0 || 'Por favor introduce tu correo']">
             <template v-slot:prepend>
               <q-icon name="email" />
             </template>
           </q-input>
 
-          <q-input class="inp" filled v-model="password" type="password" :label="$t('pass')" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
-          val => val && val.length <= 8 || 'Solo se admiten 8 caracteres'
-          ]">
+          <q-input class="inp" filled v-model="password" color="dark" :type="isPwd ? 'password' : 'text'"
+            :label="$t('pass')" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
+            val => val && val.length <= 8 || 'Solo se admiten 8 caracteres'
+            ]">
 
             <template v-slot:prepend>
               <q-icon name="lock" />
+            </template>
+            <template v-slot:append>
+              <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd" />
             </template>
           </q-input>
         </q-card-section>
 
         <q-card-section>
-          <q-btn style="border-radius: 8px; width: 400px; margin-bottom: 10px;" type="submit" color="primary" rounded size="md" :label="$t('sign')" no-caps
-             @click="onsubmit"></q-btn>
+          <q-btn style="border-radius: 8px; width: 400px; margin-bottom: 10px;" type="submit" color="primary" rounded
+            size="md" :label="$t('sign')" no-caps @click="onsubmit"></q-btn>
         </q-card-section>
 
       </q-form>
@@ -49,6 +53,7 @@ import PostService from "src/services/PostService";
 const service = new PostService();
 const posts = service.getPosts();
 
+const isPwd = ref(true)
 const name = ref("");
 const email = ref("");
 const password = ref("");
@@ -97,9 +102,11 @@ h2 {
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.inp{
- width: 400px;
+
+.inp {
+  width: 400px;
 }
+
 .q-gutter-md {
   max-width: 500px;
 }

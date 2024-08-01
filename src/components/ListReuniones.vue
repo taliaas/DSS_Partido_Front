@@ -1,13 +1,18 @@
 <template>
   <div class="q-pa-md mj">
-    <q-table flat bordered :title="$t('list')" :rows="rows" :columns="columns" row-key="name" :filter="filter">
+    <q-table flat bordered :title="t('list')" :rows="rows" :columns="columns" row-key="name" :filter="filter">
       <template v-slot:top-right>
         <q-input class="busc" flat color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
-        <q-btn color="primary" icon-right="add" rounded  @click="view = true" />
+        <q-btn color="primary" icon-right="add" rounded @click="view = true" />
+      </template>
+      <template #body-cell-delete>
+        <q-td style="text-align: center">
+          <q-btn color="secondary" icon="delete" flat dense size="12px"> </q-btn>
+        </q-td>
       </template>
     </q-table>
   </div>
@@ -17,6 +22,9 @@
 <script setup>
 import { ref } from "vue"
 import DateComp from "src/components/DateComp.vue";
+import { i18n } from 'src/boot/i18n';
+
+const t = i18n.global.t;
 
 const filter = ref("");
 const view = ref(false);
@@ -76,7 +84,7 @@ const rows = [
     place: 'Automatica',
     fecha: "04 - 03 - 2024",
     hour: "8:00"
-  },  {
+  }, {
     name: 1,
     detail: 'Reunión Extraordinaria',
     place: 'Automatica',
@@ -123,8 +131,12 @@ const columns = [
     label: 'Hora',
     field: 'hour',
     align: 'left'
+  },
+  {
+    name: "delete",
+    align: "left",
+    field: "delete"
   }
-
 ]
 </script>
 

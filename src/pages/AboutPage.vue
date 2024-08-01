@@ -25,7 +25,6 @@
 </template>
 
 <script setup>
-import ListCard from "src/components/ListCard.vue";
 
 defineOptions({
   name: "AboutPage",
