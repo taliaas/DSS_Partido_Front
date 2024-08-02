@@ -67,11 +67,27 @@ function onReset() {
   password.value = null;
 }
 const dominio = "@cujae.edu.cu";
+const createServiceInstance = new CreateService();
+const userData = {
+  name: name.value,
+  email: email.value + dominio,
+  password: password.value,
 
+};
 // Función de envío del formulario
-const onSubmit = async () => {
-  const result = await createUser(name.value, email.value + dominio, password.value,role);
-  console.log('User created:', result);
+function onSubmit () {
+
+  // Llama a la función createUser con los valores obtenidos
+  createServiceInstance.createUser(userData)
+    .then(data => {
+      console.log('User created successfully:', data);
+      // Aquí puedes manejar lo que sucede después de crear el usuario,
+      // por ejemplo, redirigir a otra página o mostrar un mensaje.
+    })
+    .catch(error => {
+      console.error('Failed to create user:', error);
+      snackbarMessage.value='Failed to create user: '+ error;
+    });
 };
 </script>
 

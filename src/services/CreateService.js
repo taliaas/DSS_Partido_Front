@@ -1,24 +1,24 @@
 export default class CreateService {
 
-  async createUser(name, email, password) {
+  async createUser(userData) {
     try {
       const response = await fetch('http://localhost:3000/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify(userData),
       });
 
       if (!response.ok) {
-        throw new Error('Error creating user');
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      return data;
+      const user = await response.json();
+      console.log(user);
+      return user;
     } catch (error) {
       console.error('Error:', error);
     }
   }
-
 }

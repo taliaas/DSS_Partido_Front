@@ -35,8 +35,7 @@
         <q-card-section class="text-center q-pt-none">
           <div class="text-dark">{{ $t('link') }}
             <a href="http://localhost:9000/autentication" class="text-dark text-weight-bold"
-              style="text-decoration: none">{{
-                $t('sign') }}</a>
+              style="text-decoration: none">{{$t('sign') }}</a>
           </div>
         </q-card-section>
       </q-form>
@@ -58,8 +57,8 @@ function onReset() {
 function onsubmit() {
   window.location.href = "http://localhost:9000/index";
 }
-
 </script>
+
 <style scoped>
 .q-gutter-md {
   max-width: 500px;
