@@ -37,26 +37,29 @@
 
         <q-card-section>
           <q-btn style="border-radius: 8px; width: 400px; margin-bottom: 10px;" type="submit" color="primary" rounded
-            size="md" :label="$t('sign')" no-caps @click="onsubmit"></q-btn>
+            size="md" :label="$t('sign')" no-caps @click="onSubmit"></q-btn>
         </q-card-section>
-
+        <q-card-section>
+          <p v-if="showSnackbar" style="color: red;" :timeout="3000">
+            {{ snackbarMessage }}
+          </p>
+        </q-card-section>
       </q-form>
     </q-card>
   </div>
 </template>
 
 <script setup>
-import { onBeforeMount, ref } from "vue";
-import { onMounted } from "vue";
-import PostService from "src/services/PostService";
-
-const service = new PostService();
-const posts = service.getPosts();
+import { ref, onMounted } from "vue";
+import CreateService from "src/services/CreateService";
 
 const isPwd = ref(true)
 const name = ref("");
 const email = ref("");
 const password = ref("");
+const role = 1;
+const showSnackbar = ref(false);
+const snackbarMessage = ref('');
 
 function onReset() {
   name.value = null;
@@ -64,17 +67,12 @@ function onReset() {
   password.value = null;
 }
 const dominio = "@cujae.edu.cu";
-const valueObject = {
-  name: name.value,
-  email: email.value + dominio,
-  password: password.value,
-  role: 1,
-}
 
-onMounted(async () => {
-  await service.create({ name: name.value, email: email.value + dominio, password: password.value, role: 1 });
-  console.log(posts);
-});
+// Función de envío del formulario
+const onSubmit = async () => {
+  const result = await createUser(name.value, email.value + dominio, password.value,role);
+  console.log('User created:', result);
+};
 </script>
 
 <style scoped>

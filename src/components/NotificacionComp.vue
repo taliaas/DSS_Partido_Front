@@ -8,8 +8,7 @@
             <q-icon name="search" />
           </template>
         </q-input>
-        <q-btn color="primary" icon-right="add" rounded @click="view = true" />
-      </template>
+        </template>
       <template #body-cell-star>
         <q-td style="text-align: center">
           <q-checkbox v-model="val" color="secondary" checked-icon="star" unchecked-icon="star_border"
@@ -143,4 +142,9 @@ function getSelectedString() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.busc {
+  margin: 10px;
+  width: 350px;
+}
+</style>

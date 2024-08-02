@@ -2,7 +2,6 @@ import { boot } from "quasar/wrappers";
 import { createI18n } from "vue-i18n";
 import en from "src/i18n/en.json";
 import es from "src/i18n/es.json";
-import { createApp } from "vue";
 
 const messages = {
   en,
