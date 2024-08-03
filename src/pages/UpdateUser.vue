@@ -1,15 +1,13 @@
 <template>
   <div>
-
+    <q-select v-model="selectedRole" :options="options" :label="$t('rol')" />
   </div>
 </template>
 
 <script setup>
-import UpdateEmail from "components/UpdateEmail.vue"
-defineOptions({
-  name: 'UpdateUser'
-});
+
 </script>
+
 
 <style scoped>
 

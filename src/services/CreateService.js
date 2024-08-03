@@ -10,9 +10,11 @@ export default class CreateService {
         body: JSON.stringify(userData),
       });
 
-      if (response.ok) {
+      if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      if(response.status == 404)
+        console.log('Usuario ya existe');
 
       const user = await response.json();
       console.log(user);

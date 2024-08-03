@@ -3,7 +3,9 @@
     <q-form @submit.prevent.stop="onSubmit">
       <p>este es para config de administrador</p>
       <h2>{{ $t('asign') }}</h2>
-      <q-select v-model="model" :options="options" :label="$t('rol')" />
+
+      <q-select v-model="selectedRole" :options="options" :label="$t('rol')" />
+
       <div class="cord">
         <q-btn type="submit" :label="$t('save')" color="primary" class="full-width" />
       </div>
@@ -12,13 +14,32 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
 
-const model = ref("")
-const options = [
-  'Miembro del Partido', 'Jefe de núcleo'
-]
+import { ref, onMounted, computed } from 'vue';
+import RoleService from 'src/services/RoleService';
 
+const roleServ = new RoleService();
+const roles = ref([]);
+const selectedRole = ref(null);
+
+// Preparar las opciones para q-select
+const options = computed(() => {
+  return roles.value.map(role => ({ label: role.name, value: role.id }));
+});
+
+function obtenerRoles() {
+  roleServ.getAllRole()
+    .then(data => {
+      roles.value = data;
+    })
+    .catch(error => {
+      console.error('Error al obtener roles:', error);
+    });
+}
+
+onMounted(() => {
+  obtenerRoles();
+});
 function onSubmit() {
 
 }

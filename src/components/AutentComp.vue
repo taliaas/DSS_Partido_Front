@@ -86,12 +86,13 @@ function onSubmit(e) {
   createServiceInstance.createUser(userData)
     .then(data => {
       console.log('User created successfully:', data);
-      onReset();
-      window.location.href="http://localhost:9000/index";
+      //token
+      //entrar
     })
     .catch(error => {
       console.error('Failed to create user:', error);
       snackbarMessage.value='Failed to create user: '+ error;
+      onReset();
     });
 };
 </script>
