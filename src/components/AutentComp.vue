@@ -86,8 +86,8 @@ function onSubmit(e) {
   createServiceInstance.createUser(userData)
     .then(data => {
       console.log('User created successfully:', data);
-      // Aquí puedes manejar lo que sucede después de crear el usuario,
-      // por ejemplo, redirigir a otra página o mostrar un mensaje.
+      onReset();
+      window.location.href="http://localhost:9000/index";
     })
     .catch(error => {
       console.error('Failed to create user:', error);
