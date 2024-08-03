@@ -68,14 +68,19 @@ function onReset() {
 }
 const dominio = "@cujae.edu.cu";
 const createServiceInstance = new CreateService();
-const userData = {
-  name: name.value,
-  email: email.value + dominio,
-  password: password.value,
 
-};
 // Función de envío del formulario
-function onSubmit () {
+function onSubmit(e) {
+
+  e.preventDefault();
+
+  const userData = {
+    name: name.value,
+    email: email.value + dominio,
+    password: password.value,
+    role: role
+
+  };
 
   // Llama a la función createUser con los valores obtenidos
   createServiceInstance.createUser(userData)
