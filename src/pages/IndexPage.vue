@@ -20,9 +20,6 @@
       </template>
     </q-parallax>
   </div>
-  <div>
-    <BtnIndex></BtnIndex>
-  </div>
 
 </template>
 
