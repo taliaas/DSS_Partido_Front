@@ -63,7 +63,8 @@ import { ref, computed } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
 import CloseDialog from 'src/components/CloseDialog.vue';
 import { useI18n } from "vue-i18n"
-const { t, locale } = useI18n();
+const { t } = useI18n();
+const { locale } = useI18n({ useScope: 'global' })
 
 defineOptions({
   name: 'MainLayout'
