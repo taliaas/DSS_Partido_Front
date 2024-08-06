@@ -45,7 +45,6 @@
 
 <script setup>
 import { ref } from "vue";
-import { Router, useRouter } from "vue-router";
 
 const email = ref(null);
 const password = ref(null);

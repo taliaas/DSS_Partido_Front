@@ -32,7 +32,6 @@ export default class AuthService {
       this.jwt = response.accessToken
       return true
 
-
     } catch (error) {
       console.log(error)
       return false
