@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import AutentComp from "src/components/AutentComp.vue";
+import AutentComp from "src/components/Registrer.vue";
 
 defineOptions({
   name: 'AutentPage'

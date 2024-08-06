@@ -14,7 +14,7 @@ export default class AuthService {
     return this.jwt
   }
 
-  async login(email, password) {
+  async login(name, password) {
     try {
       const res = await fetch('http://localhost:5000/auth/authentication', {
         method: 'POST',
@@ -23,7 +23,7 @@ export default class AuthService {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: email,
+          name: name,
           password: password,
         }),
       });

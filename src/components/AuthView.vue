@@ -8,16 +8,17 @@
         </q-card-section>
 
         <q-card-section class="q-pa-md">
-          <q-input dense outlined clearable filled v-model="email" :label="$t('email')" color="dark" lazy-rules
-            suffix="@cujae.edu.cu" :rules="[val => val && val.length > 0 || 'Por favor introduce tu correo']">
+
+          <q-input class="inp" clearable filled v-model="name" color="dark" :label="$t('name')"
+            :rules="[val => val && val.length > 0 || 'Por favor introduce tu nombre']">
             <template v-slot:prepend>
-              <q-icon name="email" />
+              <q-icon name="person" />
             </template>
           </q-input>
 
-          <q-input dense outlined filled v-model="password" :type="isPwd ? 'password' : 'text'" color="dark" :label="$t('pass')" lazy-rules
-            :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
-            val => val && val.length < 8 || 'Solo se admiten 8 caracteres'
+          <q-input dense outlined filled v-model="password" :type="isPwd ? 'password' : 'text'" color="dark"
+            :label="$t('pass')" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
+            val => val && val.length < 6 || 'Solo se admiten 8 caracteres'
             ]">
             <template v-slot:prepend>
               <q-icon name="lock" />
@@ -30,12 +31,13 @@
 
         <q-card-section>
           <q-btn style="border-radius: 8px;" type="submit" color="primary" rounded size="md" :label="$t('log')" no-caps
-            class="full-width" @click="onsubmit"></q-btn>
+            class="full-width" @click.prevent="authUser"></q-btn>
         </q-card-section>
         <q-card-section class="text-center q-pt-none">
           <div class="text-dark">{{ $t('link') }}
             <a href="http://localhost:9000/autentication" class="text-dark text-weight-bold"
-              style="text-decoration: none">{{$t('sign') }}</a>
+              style="text-decoration: none">{{
+                $t('sign') }}</a>
           </div>
         </q-card-section>
       </q-form>
@@ -44,18 +46,28 @@
 </template>
 
 <script setup>
+import AuthService from "src/services/AuthService";
 import { ref } from "vue";
 
-const email = ref(null);
+const name = ref(null);
 const password = ref(null);
 const isPwd = ref(true)
 
 function onReset() {
-  email.value = null;
+  name.value = null;
   password.value = null;
 }
-function onsubmit() {
-
+const authUser = async () => {
+  const auth = new AuthService()
+  const success = await auth.login(name.value, password.value)
+  if (success){
+    alert('Exitos')
+    //entrar
+  }
+  else{
+    alert('login incorrecto')
+    onReset()
+  }
 }
 
 </script>
