@@ -23,8 +23,8 @@
 
         </q-card-section>
         <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="Guardar" @click="addOrder" />
-          <q-btn flat label="Cancelar" v-close-popup />
+          <q-btn flat color="positive" label="Guardar" @click="addOrder" />
+          <q-btn flat color="negative" label="Cancelar" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>

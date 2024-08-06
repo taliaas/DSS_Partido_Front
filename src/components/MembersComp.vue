@@ -5,7 +5,7 @@
       :loading="loading" no-data-label="No hay datos" row-key="index" :rows-per-page-options="[0]">
       <template #body-cell-asist>
         <q-td >
-          <q-toggle :label="pinkModel"  false-value="Disagreed" true-value="Agreed" v-model="model" />
+          <q-toggle  false-value="Disagreed" true-value="Agreed" v-model="model" />
         </q-td>
       </template>
       <template v-slot:top-right>
@@ -27,8 +27,8 @@
 
         </q-card-section>
         <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="Guardar" @click="addOrder" />
-          <q-btn flat label="Cancelar" v-close-popup />
+          <q-btn flat color="positive" label="Guardar" @click="addOrder" />
+          <q-btn flat color="negative" label="Cancelar" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -42,7 +42,7 @@ const medium = ref(false);
 const loading = ref(false);
 const filter = ref("");
 const newOrder = ref("");
-const model = ref(false);
+const model = ref("Agreed");
 let rows = ref([]);
 
 const columns = [

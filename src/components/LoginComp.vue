@@ -45,6 +45,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { Router, useRouter } from "vue-router";
 
 const email = ref(null);
 const password = ref(null);
@@ -55,8 +56,9 @@ function onReset() {
   password.value = null;
 }
 function onsubmit() {
-  window.location.href = "http://localhost:9000/index";
+
 }
+
 </script>
 
 <style scoped>
