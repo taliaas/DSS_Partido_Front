@@ -34,7 +34,7 @@
 
 <script setup>
 import { ref, defineProps } from "vue";
-import ListAccount from "components/ListAccount.vue";
+import ListAccount from "src/components/Account/ListAccount.vue";
 
 const value = ref(false);
 const check2 = ref(false);

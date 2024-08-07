@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import ActaROComp from "src/components/ActaROComp.vue"
+import ActaROComp from "src/components/ActaRO/ActaROComp.vue"
 defineOptions({
   name: 'ActaPage'
 });

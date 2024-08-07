@@ -19,9 +19,9 @@ const routes = [
         component: () => import("pages/LoginPage.vue"),
       },
       {
-        path: "autentication",
-        name: "autentication",
-        component: () => import("src/pages/AutentPage.vue"),
+        path: "sigin",
+        name: "sigin",
+        component: () => import("src/pages/RegistrerPage.vue"),
       },
     ],
   },

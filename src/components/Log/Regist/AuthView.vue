@@ -60,7 +60,7 @@ function onReset() {
 const authUser = async () => {
   const auth = new AuthService()
   const success = await auth.login(name.value, password.value)
-  if (success){
+  if (!success){
     alert('Exitos')
     //entrar
   }

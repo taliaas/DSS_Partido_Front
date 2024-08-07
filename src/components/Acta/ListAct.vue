@@ -46,9 +46,9 @@
 </template>
 
 <script setup>
-import DetailsActa from "./DetailsActa.vue";
-import ActaROComp from "./ActaROComp.vue";
-import DeleteComp from "./DeleteComp.vue";
+import DetailsActa from "./Acta/DetailsActa.vue";
+import ActaROComp from "./ActaRO/ActaROComp.vue";
+import DeleteComp from "./Dialog/DeleteComp.vue";
 import { ref } from "vue";
 
 const filter = ref("");

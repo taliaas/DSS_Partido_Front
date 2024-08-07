@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import BalanceTable from "components/BalanceTable.vue"
+import BalanceTable from "src/components/Balance/BalanceTable.vue"
 
 defineOptions({
   name: 'BalancePage'

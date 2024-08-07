@@ -57,7 +57,7 @@ const isPwd = ref(true)
 const name = ref("");
 const email = ref("");
 const password = ref("");
-const role = 1;
+const role = 'admin';
 const showSnackbar = ref(false);
 const snackbarMessage = ref('');
 
@@ -79,7 +79,6 @@ function onSubmit(e) {
     email: email.value + dominio,
     password: password.value,
     role: role
-
   };
 
   // Llama a la función createUser con los valores obtenidos

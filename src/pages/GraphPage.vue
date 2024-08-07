@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import ReportGraph from "components/ReportGraph.vue"
+import ReportGraph from "src/components/Graph/ReportGraph.vue"
 
 defineOptions({
   name: 'GraphPage'

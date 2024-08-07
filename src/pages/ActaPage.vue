@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import ListAct from "src/components/ListAct.vue";
+import ListAct from "src/components/Acta/ListAct.vue";
 
 defineOptions({
   name: 'ActaPage'

@@ -1,32 +1,37 @@
 <template>
   <div class="q-pa-md mj">
-    <q-table flat bordered :title="t('list')" :rows="rows" :columns="columns" row-key="name" :filter="filter">
+    <q-table flat bordered :title="$t('notif')" :rows="rows" :columns="columns" row-key="name" :filter="filter"
+      :selected-rows-label="getSelectedString" selection="multiple" v-model:selected="selected">
       <template v-slot:top-right>
         <q-input class="busc" flat color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
-        <q-btn color="primary" icon-right="add" rounded @click="view = true" />
+      </template>
+      <template #body-cell-star>
+        <q-td style="text-align: center">
+          <q-checkbox v-model="val" color="secondary" checked-icon="star" unchecked-icon="star_border"
+            indeterminate-icon="help" />
+        </q-td>
       </template>
       <template #body-cell-delete>
         <q-td style="text-align: center">
-          <q-btn color="secondary" icon="delete" flat dense size="12px"> </q-btn>
+          <q-btn color="secondary" icon="delete" flat dense size="12px"></q-btn>
         </q-td>
       </template>
     </q-table>
   </div>
-  <DateComp :value="view"></DateComp>
 </template>
 
 <script setup>
 import { ref } from "vue"
-import DateComp from "src/components/DateComp.vue";
-import { i18n } from 'src/boot/i18n';
+import DateComp from "src/components/Dialog/DateComp.vue";
 
-const t = i18n.global.t;
+const val = ref(false)
 
 const filter = ref("");
+const selected = ref([])
 const view = ref(false);
 const rows = [
   {
@@ -100,10 +105,11 @@ const rows = [
   }
 ]
 const columns = [
+
   {
     name: 'name',
     required: true,
-    label: 'Núcleo',
+    label: 'Name',
     align: 'left',
     field: row => row.name,
     sortable: true
@@ -115,22 +121,14 @@ const columns = [
     align: 'left'
   },
   {
-    name: 'place',
-    label: 'Lugar',
-    field: 'place',
-    align: 'left'
-  },
-  {
-    name: 'fecha',
-    label: 'Fecha',
-    field: 'fecha',
-    align: 'left'
-  },
-  {
     name: 'hour',
-    label: 'Hora',
     field: 'hour',
     align: 'left'
+  },
+  {
+    name: "star",
+    align: 'left',
+    field: 'star'
   },
   {
     name: "delete",
@@ -138,16 +136,15 @@ const columns = [
     field: "delete"
   }
 ]
+
+function getSelectedString() {
+  return selected.value.length === 0 ? '' : `${selected.value.length} record${selected.value.length > 1 ? 's' : ''} selected of ${rows.length}`
+}
 </script>
 
 <style scoped>
-.mj {
-  width: 1400px;
-  height: 600px;
-}
-
 .busc {
-  width: 300px;
-  margin-right: 20px;
+  margin: 10px;
+  width: 350px;
 }
 </style>

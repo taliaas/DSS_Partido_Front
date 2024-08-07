@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import SelectGraph from "components/SelectGraph.vue"
-import GraphComp from "src/components/GraphComp.vue";
+import SelectGraph from "src/components/Graph/SelectGraph.vue"
+import GraphComp from "src/components/Graph/GraphComp.vue";
 import { ref } from "vue";
 
 const selectedItem = ref("");

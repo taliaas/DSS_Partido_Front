@@ -11,10 +11,10 @@
 </template>
 
 <script setup>
-import InputPolit from "components/InputPolit.vue";
-import DesarrolloPolitComp from "src/components/DesarrolloPolitComp.vue";
-import BtnPolit from "components/BtnPolit.vue";
-import AgreemComp from "src/components/AgreemComp.vue";
+import InputPolit from "src/components/ActaCP/InputPolit.vue";
+import DesarrolloPolitComp from "src/components/ActaCP/DesarrolloPolitComp.vue";
+import BtnPolit from "src/components/ActaCP/BtnPolit.vue";
+import AgreemComp from "src/components/ActaRO/AgreemComp.vue";
 
 defineOptions({
   name: 'ActaPolitPage'

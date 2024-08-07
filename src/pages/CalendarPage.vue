@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import ListReuniones from "src/components/ListReuniones.vue";
+import ListReuniones from "src/components/Notificaciones/ListReuniones.vue";
 
 </script>
 

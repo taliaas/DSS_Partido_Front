@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import AuthView from "src/components/AuthView.vue";
+import AuthView from "src/components/Log/Regist/AuthView.vue";
 
 defineOptions({
   name: 'LoginPage'

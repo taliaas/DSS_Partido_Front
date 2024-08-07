@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import NotificacionComp from "src/components/NotificacionComp.vue"
+import NotificacionComp from "src/components/Notificaciones/NotificacionComp.vue"
 </script>
 
 <style scoped></style>
