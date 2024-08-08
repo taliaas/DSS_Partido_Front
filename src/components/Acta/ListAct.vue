@@ -52,7 +52,6 @@ import { ref } from "vue";
 
 const filter = ref("");
 const loading = ref(false);
-const update = ref(false);
 const selectedRow = ref(null);
 const view = ref(false);
 const persistent = ref(false);
