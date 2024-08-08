@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import BtnIndex from 'src/components/BtnIndex.vue';
 
 defineOptions({
   name: 'IndexPage'
