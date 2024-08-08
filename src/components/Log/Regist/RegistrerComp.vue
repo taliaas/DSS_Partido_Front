@@ -1,5 +1,5 @@
 <template>
-  <div align="center" class="q-gutter-md " style="margin-top: 50px;">
+  <div style=" padding: 0px; margin: 0px;">
     <q-card class="conteiner"
       style="background-color: rgba(255,255,255,0.6); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
       <q-form>
@@ -36,7 +36,7 @@
         </q-card-section>
 
         <q-card-section>
-          <q-btn style="border-radius: 8px; width: 400px; margin-bottom: 10px;" type="submit" color="primary" rounded
+          <q-btn style="border-radius: 8px; width: 100%; margin-bottom: 10px;" type="submit" color="primary" rounded
             size="md" :label="$t('sign')" no-caps @click="onSubmit"></q-btn>
         </q-card-section>
         <q-card-section>
@@ -90,7 +90,7 @@ function onSubmit(e) {
     })
     .catch(error => {
       console.error('Failed to create user:', error);
-      snackbarMessage.value='Failed to create user: '+ error;
+      snackbarMessage.value = 'Failed to create user: ' + error;
       onReset();
     });
 };
@@ -99,8 +99,6 @@ function onSubmit(e) {
 <style scoped>
 .container {
   max-width: 100%;
-  height: auto;
-  margin: 10px;
 }
 
 .q-pa-md {
@@ -123,7 +121,7 @@ h2 {
 }
 
 .inp {
-  width: 400px;
+  width: 100%;
 }
 
 .q-gutter-md {

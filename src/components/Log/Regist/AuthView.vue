@@ -1,5 +1,5 @@
 <template>
-  <div align="center" class="q-gutter-md " style="margin-top: 50px;">
+  <div>
     <q-card class="conteiner"
       style="background-color: rgba(255,255,255,0.6); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
       <q-form>
@@ -16,7 +16,7 @@
             </template>
           </q-input>
 
-          <q-input dense outlined filled v-model="password" :type="isPwd ? 'password' : 'text'" color="dark"
+          <q-input outlined filled v-model="password" :type="isPwd ? 'password' : 'text'" color="dark"
             :label="$t('pass')" lazy-rules :rules="[val => val && val.length > 0 || 'Por favor introduce tu contraseña',
             val => val && val.length < 6 || 'Solo se admiten 8 caracteres'
             ]">
@@ -35,9 +35,8 @@
         </q-card-section>
         <q-card-section class="text-center q-pt-none">
           <div class="text-dark">{{ $t('link') }}
-            <a href="http://localhost:9000/autentication" class="text-dark text-weight-bold"
-              style="text-decoration: none">{{
-                $t('sign') }}</a>
+            <a href="http://localhost:9000/sigin" class="text-dark text-weight-bold" style="text-decoration: none">{{
+              $t('sign') }}</a>
           </div>
         </q-card-section>
       </q-form>
@@ -60,11 +59,11 @@ function onReset() {
 const authUser = async () => {
   const auth = new AuthService()
   const success = await auth.login(name.value, password.value)
-  if (!success){
+  if (!success) {
     alert('Exitos')
     //entrar
   }
-  else{
+  else {
     alert('login incorrecto')
     onReset()
   }

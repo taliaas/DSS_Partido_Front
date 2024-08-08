@@ -1,10 +1,8 @@
 <template>
-  <q-page>
-    <q-img class="cp" src="src/img/indexPage.jpg">
-      <div class="absolute-full " align="center">
-          <Registrer style="width: 600px; max-height: 600px; " />
-      </div>
-    </q-img>
+  <q-page class="main">
+    <div class="absolute-full comp">
+      <Registrer />
+    </div>
   </q-page>
 </template>
 
@@ -17,14 +15,13 @@ defineOptions({
 </script>
 
 <style scoped>
-.comp {
-  flex-direction: row;
-  display: flex;
-  flex-wrap: wrap;
+.main {
+  background-image: url("src/img/indexPage.jpg");
 }
 
-.cp {
+.comp {
   display: flex;
-  height: 687px;
+  justify-content: center;
+  align-items: center;
 }
 </style>
