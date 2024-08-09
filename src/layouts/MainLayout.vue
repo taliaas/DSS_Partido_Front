@@ -33,7 +33,7 @@
             {{ $t("men") }}
           </q-item-label>
           <div class="menu-list">
-            <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
+            <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" :titleNew="$t(link.title)" />
           </div>
         </q-list>
         <q-separator></q-separator>
@@ -77,27 +77,27 @@ const temp = ref(false);
 
 const linksList = [
   {
-    title: t("home"),
+    title: "home",
     icon: "home",
     link: "/index",
   },
   {
-    title: t("p1"),
+    title: "p1",
     icon: "collections_bookmark",
     link: "/index/actas",
   },
   {
-    title: t("p2"),
+    title: "p2",
     icon: "tab",
     link: "/index/balance",
   },
   {
-    title: t("p3"),
+    title: "p3",
     icon: "timeline",
     link: "/index/graph",
   },
   {
-    title: t("p4"),
+    title: "p4",
     icon: "event",
     link: "/index/calendar"
   }

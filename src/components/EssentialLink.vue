@@ -5,7 +5,7 @@
     </q-item-section>
 
     <q-item-section>
-      <q-item-label >{{ title }}</q-item-label>
+      <q-item-label >{{ titleNew }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
@@ -28,6 +28,10 @@ const props = defineProps({
   icon: {
     type: String,
     default: ''
-  }
+  },
+  titleNew: {
+    type: String,
+    required: true
+  },
 })
 </script>
