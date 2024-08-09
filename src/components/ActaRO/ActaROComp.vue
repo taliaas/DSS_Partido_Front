@@ -3,7 +3,7 @@
     <h2>{{ $t('r1') }}</h2>
   </div>
   <div class="input">
-    <InfoActaComp @update:nucleo="handleNucleoUpdate" @update:area="handleAreaUpdate"/>
+    <InfoActaComp @update:nucleo="handleNucleoUpdate" @update:area="handleAreaUpdate" />
     <AsistenciaComp />
     <DateComp />
     <TimeComp />
@@ -51,10 +51,12 @@ let nucleo = ref("");
 let area = ref("");
 
 function handleNucleoUpdate(value) {
+  console.log(value)
   nucleo.value = value;
 }
 
 function handleAreaUpdate(value) {
+  console.log(value)
   area.value = value;
 }
 </script>
@@ -64,21 +66,23 @@ function handleAreaUpdate(value) {
   margin: 25px;
   width: 150px;
 }
+
 h2 {
   margin: 20px;
   font-size: 44px;
 }
+
 .container {
   margin: 20px;
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
 }
+
 .input {
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
 }
-
 </style>

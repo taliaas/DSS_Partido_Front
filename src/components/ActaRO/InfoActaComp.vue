@@ -6,11 +6,17 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits, watchEffect } from "vue";
 
 const nucleo = ref("1");
 const area = ref("1");
 
+const emit = defineEmits(['update:nucleo', 'update:area'])
+
+watchEffect (() => {
+  emit('update:nucleo', nucleo.value),
+  emit('update:area', area.value)
+});
 </script>
 
 <style scoped>
