@@ -38,8 +38,8 @@ const routes = [
         component: () => import("src/pages/ActaPage.vue"),
       },
       {
-        path: "Actaordinaria",
-        name: "ActaRO",
+        path: "minutes",
+        name: "minutes",
         component: () => import("src/pages/ActaROPage.vue"),
       },
       {

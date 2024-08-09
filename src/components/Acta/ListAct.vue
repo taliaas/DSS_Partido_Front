@@ -3,26 +3,28 @@
     <q-table title="Actas del Partido" :rows="rows" :columns="columns" row-key="name" :filter="filter"
       :loading="loading" @row-click="handleRowClick">
       <template #body-cell-view>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="visibility" size="10px"
-            @click="view = !view" /></q-td>
+          <q-td style="text-align: left" auto-width>
+            <q-btn flat color="secondary" :icon="expand ? 'visibility' : 'visibility_off'" size="10px"
+              @click="expand = !expand" />
+          </q-td>
       </template>
       <template #body-cell-update>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="update" size="10px" /></q-td>
+        <q-td style="text-align: left"><q-btn flat color="secondary" icon="update" size="10px" /></q-td>
       </template>
       <template #body-cell-delete>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="delete" size="10px"
-          @click="alert" /></q-td>
+        <q-td style="text-align: left"><q-btn flat color="secondary" icon="delete" size="10px" @click="alert" /></q-td>
       </template>
-      <template #body-cell-add>
-        <q-td style="text-align: center"><q-btn flat icon="add" size="10px" @click="addProcced" /></q-td>
-      </template>
+
       <template v-slot:top-right>
         <q-input class="busc" dense color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
+
+        <q-btn color="primary" outline round icon="add" size="14px" href="/index/minutes" />
       </template>
+
     </q-table>
   </div>
 </template>
@@ -37,7 +39,7 @@ const filter = ref("");
 const loading = ref(true);
 const selectedRow = ref(null);
 const view = ref(false);
-const persistent = ref(false);
+const expand = ref(false);
 
 const { t } = useI18n()
 const $q = useQuasar()
@@ -66,15 +68,15 @@ const columns = [
     format: val => `${val}`,
     sortable: true
   },
-  { name: 'nucleo', align: 'center', label: 'Núcleo', field: 'nucleo', sortable: true },
-  { name: 'area', align: 'center', label: 'Área', field: 'area', sortable: true },
-  { name: 'ausent', align: 'center', label: 'Ausentes', field: 'missing', sortable: true },
-  { name: 'presente', align: 'center', label: 'Presentes', field: 'present', sortable: true },
-  { name: 'hora', align: 'center', label: 'Hora', field: 'hour', sortable: true },
-  { name: 'fet', align: 'center', label: 'Fecha', field: 'day', sortable: true },
-  { name: 'view', align: 'center', label: 'Detalles', field: 'view' },
-  { name: 'update', align: 'center', label: 'Modificar', field: 'update' },
-  { name: 'delete', align: 'center', label: 'Eliminar', field: 'delete' },
+  { name: 'nucleo', align: 'left', label: 'Núcleo', field: 'nucleo', sortable: true },
+  { name: 'area', align: 'left', label: 'Área', field: 'area', sortable: true },
+  { name: 'ausent', align: 'left', label: 'Ausentes', field: 'missing', sortable: true },
+  { name: 'presente', align: 'left', label: 'Presentes', field: 'present', sortable: true },
+  { name: 'hora', align: 'left', label: 'Hora', field: 'hour', sortable: true },
+  { name: 'fet', align: 'left', label: 'Fecha', field: 'day', sortable: true },
+  { name: 'view', align: 'left', label: 'Detalles', field: 'view' },
+  { name: 'update', align: 'left', label: 'Modificar', field: 'update' },
+  { name: 'delete', align: 'left', label: 'Eliminar', field: 'delete' },
 ]
 
 function handleRowClick(evt, row, index) {
