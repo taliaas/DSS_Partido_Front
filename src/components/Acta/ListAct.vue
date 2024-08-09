@@ -3,16 +3,17 @@
     <q-table title="Actas del Partido" :rows="rows" :columns="columns" row-key="name" :filter="filter"
       :loading="loading" @row-click="handleRowClick">
       <template #body-cell-view>
-          <q-td style="text-align: left" auto-width>
-            <q-btn flat color="secondary" :icon="expand ? 'visibility' : 'visibility_off'" size="10px"
-              @click="expand = !expand" />
-          </q-td>
+        <q-td style="text-align: left" auto-width>
+          <q-btn flat color="secondary" :icon="expand ? 'visibility' : 'visibility_off'" size="10px"
+            @click="expand = !expand" />
+        </q-td>
       </template>
       <template #body-cell-update>
         <q-td style="text-align: left"><q-btn flat color="secondary" icon="update" size="10px" /></q-td>
       </template>
       <template #body-cell-delete>
-        <q-td style="text-align: left"><q-btn flat color="secondary" icon="delete" size="10px" @click="alert" /></q-td>
+        <q-td style="text-align: left"><q-btn flat color="secondary" icon="delete" size="10px"
+            @click="alertActa" /></q-td>
       </template>
 
       <template v-slot:top-right>
@@ -31,30 +32,29 @@
 
 <script setup>
 import ActaService from "src/services/ActaService";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch, watchEffect } from "vue";
 import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
+import DeleteActa from "src/services/DeleteActa";
 
 const filter = ref("");
 const loading = ref(true);
 const selectedRow = ref(null);
-const view = ref(false);
 const expand = ref(false);
 
 const { t } = useI18n()
 const $q = useQuasar()
 
-function alert() {
+function alertActa() {
+
   $q.dialog({
     title: t('remove'),
     message: t('delete'),
     persistent: true
   }).onOk(() => {
-    // console.log('OK')
+    deleteActa(selectedRow.value);
   }).onCancel(() => {
-    // console.log('Cancel')
-  }).onDismiss(() => {
-    // console.log('I am triggered on both OK and Cancel')
+    console.log('Cancel');
   })
 }
 
@@ -80,16 +80,15 @@ const columns = [
 ]
 
 function handleRowClick(evt, row, index) {
-  selectedRow.value = JSON.stringify(row.name);
-  console.log(`Fila seleccionada: ${row.name}`);
-  console.log(view.value);
-
-  return row.name;
+  selectedRow.value = JSON.stringify(row.id);
+  console.log(`Id de fila seleccionada: ${selectedRow.value}`);
+  return selectedRow;
 }
 const rows = ref([]);
 
-onMounted(async () => {
-  const acta = new ActaService()
+onMounted (loadActaROData);
+async function loadActaROData() {
+  const acta = new ActaService();
   try {
     const actaROData = await acta.getActaRO();
     rows.value = actaROData;
@@ -98,7 +97,22 @@ onMounted(async () => {
     console.error('Error al cargar las Acta de Reunión Ordinaria', error);
     loading.value = false;
   }
-});
+}
+
+async function deleteActa(actaId) {
+  console.log(actaId);
+
+  const actaService = new DeleteActa();
+  await actaService.deleteActaRO(actaId)
+    .then(() => {
+      // Actualiza las filas después de eliminar con éxito
+      rows.value = rows.value.filter(row => row.id !== actaId);
+    })
+    .catch(error => {
+      console.error('Error al eliminar el acta:', error);
+    });
+    loadActaROData();
+}
 </script>
 
 <style scoped>

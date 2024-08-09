@@ -84,7 +84,6 @@ async function save() {
   }
 }
 
-
 function handleNucleoUpdate(value) {
   console.log(value)
   nucleo.value = value;
