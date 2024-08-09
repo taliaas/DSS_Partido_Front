@@ -2,18 +2,6 @@
   <div class="q-pa-md">
     <q-table title="Actas del Partido" :rows="rows" :columns="columns" row-key="name" :filter="filter"
       :loading="loading" @row-click="handleRowClick">
-      <template #body-cell-name="{ row }">
-        <q-td>Acta de Reunión Ordinaria No.{{ row.name }}</q-td>
-      </template>
-      <template #body-cell-nucleo="{ row }">
-        <q-td style="text-align: center">{{ row.nucleo }}</q-td>
-      </template>
-      <template #body-cell-area="{ row }">
-        <q-td style="text-align: center">{{ row.area }}</q-td>
-      </template>
-      <template #body-cell-fet="{ row }">
-        <q-td style="text-align: center">{{ row.fet }}</q-td>
-      </template>
       <template #body-cell-view>
         <q-td style="text-align: center"><q-btn flat color="secondary" icon="visibility" size="10px"
             @click="view = !view" /></q-td>
@@ -35,60 +23,41 @@
             <q-icon name="search" />
           </template>
         </q-input>
-
-        <q-btn class="btnAdd" icon="add" round color="primary" @click="addProcced"></q-btn>
       </template>
     </q-table>
 
-    <DetailsActa :value="view" :id="idActa"></DetailsActa>
-    <DeleteComp :value="persistent"></DeleteComp>
   </div>
 </template>
 
 <script setup>
-import DetailsActa from "./Acta/DetailsActa.vue";
-import DeleteComp from "./Dialog/DeleteComp.vue";
-import { ref } from "vue";
+import ActaService from "src/services/ActaService";
+import { ref, onMounted } from "vue";
 
 const filter = ref("");
-const loading = ref(false);
+const loading = ref(true);
 const selectedRow = ref(null);
 const view = ref(false);
 const persistent = ref(false);
-const idActa = ref("2")
 
 const columns = [
   {
-    name: 'name',
+    name: 'id',
     required: true,
-    label: 'Nombre',
+    label: 'No. Acta',
     align: 'left',
-    field: row => row.name,
+    field: row => row.id,
     format: val => `${val}`,
     sortable: true
   },
   { name: 'nucleo', align: 'center', label: 'Núcleo', field: 'nucleo', sortable: true },
   { name: 'area', align: 'center', label: 'Área', field: 'area', sortable: true },
-  { name: 'fet', align: 'center', label: 'Fecha', field: 'fet', sortable: true },
+  { name: 'ausent', align: 'center', label: 'Ausentes', field: 'missing', sortable: true },
+  { name: 'presente', align: 'center', label: 'Presentes', field: 'present', sortable: true },
+  { name: 'hora', align: 'center', label: 'Hora', field: 'hour', sortable: true },
+  { name: 'fet', align: 'center', label: 'Fecha', field: 'day', sortable: true },
   { name: 'view', align: 'center', label: 'Detalles', field: 'view' },
   { name: 'update', align: 'center', label: 'Modificar', field: 'update' },
   { name: 'delete', align: 'center', label: 'Eliminar', field: 'delete' },
-]
-const rows = [
-  {
-    name: 1,
-    nucleo: 159,
-    area: 11,
-    fet: 6.0,
-
-  },
-  {
-    name: 2,
-    nucleo: 518,
-    area: 31,
-    fet: 26.0,
-
-  }
 ]
 
 function handleRowClick(evt, row, index) {
@@ -102,7 +71,19 @@ function handleRowClick(evt, row, index) {
 function addProcced() {
   window.location.href = "http://localhost:9000/index/actaordinaria";
 }
+const rows = ref([]);
 
+onMounted(async () => {
+  const acta = new ActaService()
+  try {
+    const actaROData = await acta.getActaRO();
+    rows.value = actaROData;
+    loading.value = false;
+  } catch (error) {
+    console.error('Error al cargar las Acta de Reunión Ordinaria', error);
+    loading.value = false;
+  }
+});
 </script>
 
 <style scoped>

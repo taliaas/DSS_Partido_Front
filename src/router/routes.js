@@ -34,7 +34,7 @@ const routes = [
       { path: "", component: () => import("pages/IndexPage.vue") },
       {
         path: "actas",
-        name: "acta",
+        name: "actas",
         component: () => import("src/pages/ActaPage.vue"),
       },
       {
