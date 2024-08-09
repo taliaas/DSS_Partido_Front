@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch, defineEmits } from "vue";
 
 const medium = ref(false);
 const loading = ref(false);
@@ -60,6 +60,13 @@ function addOrder() {
     newOrder.value = "";
   }
 }
+
+const emit = defineEmits(['update:order']);
+
+watch(rows, (newValue, oldValue) => {
+  emit('update:order', newValue);
+}, { deep: true });
+
 
 //hacer remove
 function removeRow() { }

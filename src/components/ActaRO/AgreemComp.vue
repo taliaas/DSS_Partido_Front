@@ -32,10 +32,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits, watch } from "vue";
 import { useI18n } from 'vue-i18n'
-
 const { t } = useI18n()
+
 const medium = ref(false);
 const loading = ref(false);
 const filter = ref("");
@@ -44,7 +44,6 @@ const agreem = ref("");
 let rows = ref([]);
 
 const columns = [
-
   {
     name: 'desc',
     required: true,
@@ -62,6 +61,12 @@ function addOrder() {
     agreem.value = "";
   }
 }
+
+const emit = defineEmits(['update:agreem']);
+
+watch(rows, (newValue, oldValue) => {
+  emit('update:agreem', newValue);
+}, { deep: true });
 
 //hacer remove
 function removeRow() { }

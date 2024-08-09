@@ -7,11 +7,17 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect, defineEmits } from "vue";
 
 const model = ref("");
 
 //metodos para hacer: validate - resetValidation - rules
+
+const emit = defineEmits(['update:develop'])
+
+watchEffect(() => {
+  emit('update:develop', model.value)
+});
 </script>
 
 <style scoped>

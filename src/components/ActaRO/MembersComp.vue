@@ -1,13 +1,8 @@
 <template>
   <div style=" margin: 25px;">
 
-    <q-table flat bordered :title="$t('miembros')" :rows="rows" :columns="columns" :filter="filter"
-      :loading="loading" no-data-label="No hay datos" row-key="index" :rows-per-page-options="[0]">
-      <template #body-cell-asist>
-        <q-td >
-          <q-toggle  false-value="Disagreed" true-value="Agreed" v-model="model" />
-        </q-td>
-      </template>
+    <q-table flat bordered :title="$t('miembros')" :rows="rows" :columns="columns" :filter="filter" :loading="loading"
+      no-data-label="No hay datos" row-key="index">
       <template v-slot:top-right>
         <q-btn color="primary" :disable="loading" round icon="add" @click="medium = true" />
         <q-btn v-if="rows.length !== 0" class="q-ml-sm" round color="primary" :disable="loading" icon="remove"
@@ -36,17 +31,15 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch, defineEmits } from "vue";
 
 const medium = ref(false);
 const loading = ref(false);
 const filter = ref("");
 const newOrder = ref("");
-const model = ref("Agreed");
 let rows = ref([]);
 
 const columns = [
-
   {
     name: 'desc',
     required: true,
@@ -55,15 +48,8 @@ const columns = [
     field: row => row.desc,
     format: val => `${val}`,
     sortable: true
-  },
-  {
-    name: "asist",
-    required: true,
-    label: "Asistencia",
-    align: 'left',
-    field: "asist",
   }
-]
+];
 
 function addOrder() {
   if (newOrder.value !== null) {
@@ -72,9 +58,15 @@ function addOrder() {
   }
 }
 
-//hacer remove
-function removeRow() { }
+const emit = defineEmits(['update:miembros']);
 
+watch(rows, (newValue, oldValue) => {
+  emit('update:miembros', newValue);
+}, { deep: true });
+
+function removeRow() {
+  // Implementa la lógica para remover una fila
+}
 </script>
 
 <style scoped>

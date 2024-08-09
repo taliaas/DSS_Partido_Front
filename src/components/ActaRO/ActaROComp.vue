@@ -4,19 +4,19 @@
   </div>
   <div class="input">
     <InfoActaComp @update:nucleo="handleNucleoUpdate" @update:area="handleAreaUpdate" />
-    <AsistenciaComp @update:pres="handlePresUpdate" @update:aus="handleAusUpdate"/>
-    <DateComp @update:date="handleDateUpdate"/>
-    <TimeComp @update:time="handleTimeUpdate"/>
+    <AsistenciaComp @update:pres="handlePresUpdate" @update:aus="handleAusUpdate" />
+    <DateComp @update:date="handleDateUpdate" />
+    <TimeComp @update:time="handleTimeUpdate" />
     <q-separator />
   </div>
   <div>
-    <MembersComp />
-    <OrdenTable />
-    <Development />
-    <AgreemComp />
+    <MembersComp @update:miembros="handleMembersUpdate" />
+    <OrdenTable @update:order="handleOrdersUpdate" />
+    <Development @update:develop="handleDevelopUpdate" />
+    <AgreemComp @update:agreem="handleAgreemUpdate" />
   </div>
   <div class="container">
-    <q-checkbox v-model="teal" val="teal" color="primary" :label="$t('btn7')" />
+    <q-checkbox v-model="check" val="teal" color="primary" :label="$t('btn7')" />
   </div>
 
   <div class="container">
@@ -32,6 +32,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import ActaService from "src/services/ActaService";
 import InfoActaComp from "src/components/ActaRO/InfoActaComp.vue";
 import OrdenTable from "src/components/ActaRO/OrdenTable.vue";
 import AgreemComp from "src/components/ActaRO/AgreemComp.vue";
@@ -42,14 +43,48 @@ import DateComp from "./DateComp.vue";
 import TimeComp from './TimeComp.vue';
 
 const submitting = ref(false);
-const teal = ref(true);
-
+const check = ref(true);
 let nucleo = ref("");
 let area = ref("");
 let aus = ref("")
 let pres = ref("")
 let time = ref("")
 let date = ref("")
+let memb = ref("")
+let order = ref("")
+let develop = ref("")
+let agreem = ref("")
+
+async function save() {
+  const crearActa = new ActaService();
+  try {
+    submitting.value = true;
+
+    const actaData = {
+      nucleo: nucleo.value,
+      area: area.value,
+      missing: aus.value,
+      present: pres.value,
+      hour: time.value,
+      day: date.value,
+      members: memb.value,
+      order: order.value,
+      development: develop.value,
+      agreements: agreem.value,
+      cp: check.value
+    };
+
+    const result = await crearActa.createActaRO(actaData);
+
+    console.log(result);
+    submitting.value = false;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    submitting.value = false;
+  }
+}
+
 
 function handleNucleoUpdate(value) {
   console.log(value)
@@ -79,6 +114,26 @@ function handleDateUpdate(value) {
 function handleTimeUpdate(value) {
   console.log(value)
   time.value = value;
+}
+
+function handleMembersUpdate(value) {
+  console.log(value)
+  memb.value = value;
+}
+
+function handleOrdersUpdate(value) {
+  console.log(value)
+  order.value = value;
+}
+
+function handleDevelopUpdate(value) {
+  console.log(value)
+  develop.value = value;
+}
+
+function handleAgreemUpdate(value) {
+  console.log(value)
+  agreem.value = value;
 }
 </script>
 
