@@ -1,9 +1,9 @@
-export default class DeleteActa{
+export default class UpdateActa{
 
-  async deleteActaCP(idActaCP) {
+  async updateActa(idActaCP, actaData) {
     try {
-      const response = await fetch(`http://localhost:5000/acta-cp/${idActaCP}`, {
-        method: 'DELETE',
+      const response = await fetch(`http://localhost:5000/acta-ro/${idActaCP}`, actaData, {
+        method: 'UPDATE',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -13,17 +13,17 @@ export default class DeleteActa{
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      console.log('La Acta de Círculo Político fue eliminada exitosamente');
+      console.log('El Acta de Círculo Político fue actualizada exitosamente');
       return response.data;
     } catch (error) {
-      console.error('Error al eliminar el Acta de Círculo Político deseada:', error);
+      console.error('Error al eliminar el Acta de Círculo Político deseada', error);
     }
   }
 
-  async deleteActaRO(idActaRO) {
+  async actualizarActaRO(idActaRO, actaData) {
     try {
-      const response = await fetch(`http://localhost:5000/acta-ro/${idActaRO}`, {
-        method: 'DELETE',
+      const response = await fetch(`http://localhost:5000/acta-ro/${idActaRO}`, actaData, {
+        method: 'UPDATE',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,7 +33,7 @@ export default class DeleteActa{
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      console.log('El Acta de Reunión Ordinaria fue eliminada exitosamente');
+      console.log('El Acta de Reunión Ordinaria fue actualizada exitosamente');
       return response.data;
     } catch (error) {
       console.error('Error al eliminar el Acta de Reunión Ordinaria deseada', error);
