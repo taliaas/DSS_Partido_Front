@@ -14,7 +14,9 @@ export default class ActaService {
           }
           if(response.status == 404)
             console.log('El Acta de Círculo Político que desea agregar ya existe');
-
+          else if(response.status !== 201){
+            console.error('Se ha creado el Acta de Círculo Político', error);
+          }
           const actaCP = await response.json();
           console.log(actaCP);
           return actaCP;
@@ -38,7 +40,9 @@ export default class ActaService {
           }
           if(response.status == 404)
             console.log('El Acta de Reunión Ordinaria que desea agregar ya existe');
-
+          else if(response.status !== 201){
+            console.error('Se ha creado el Acta', error);
+          }
           const actaRO = await response.json();
           console.log(actaRO);
           return actaRO;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div style=" margin: 25px;">
     <h2>{{ $t("des") }}</h2>
     <q-input class="comp" clearable outlined autogrow v-model="model" />
 
@@ -24,10 +24,6 @@ watchEffect(() => {
 h2 {
   font-size: 24px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.container {
-  margin: 30px;
 }
 
 .comp {

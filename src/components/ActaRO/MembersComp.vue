@@ -70,9 +70,5 @@ function removeRow() {
 </script>
 
 <style scoped>
-h2 {
-  font-size: 32px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  margin: 45px;
-}
+
 </style>

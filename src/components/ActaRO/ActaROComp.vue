@@ -1,32 +1,33 @@
 <template>
-  <div>
-    <h2>{{ $t('r1') }}</h2>
-  </div>
-  <div class="input">
-    <InfoActaComp @update:nucleo="handleNucleoUpdate" @update:area="handleAreaUpdate" />
-    <AsistenciaComp @update:pres="handlePresUpdate" @update:aus="handleAusUpdate" />
-    <DateComp @update:date="handleDateUpdate" />
-    <TimeComp @update:time="handleTimeUpdate" />
-    <q-separator />
-  </div>
-  <div>
-    <MembersComp @update:miembros="handleMembersUpdate" />
-    <OrdenTable @update:order="handleOrdersUpdate" />
-    <Development @update:develop="handleDevelopUpdate" />
-    <AgreemComp @update:agreem="handleAgreemUpdate" />
-  </div>
   <div class="container">
-    <q-checkbox v-model="check" val="teal" color="primary" :label="$t('btn7')" />
+    <div>
+      <h2>{{ $t('r1') }}</h2>
+    </div>
+    <div class="input">
+      <InfoActaComp @update:nucleo="handleNucleoUpdate" @update:area="handleAreaUpdate" />
+      <AsistenciaComp @update:pres="handlePresUpdate" @update:aus="handleAusUpdate" />
+      <DateComp @update:date="handleDateUpdate" />
+      <TimeComp @update:time="handleTimeUpdate" />
+      <q-separator />
+    </div>
+    <div class="tablas">
+      <MembersComp @update:miembros="handleMembersUpdate" />
+      <OrdenTable @update:order="handleOrdersUpdate" />
+      <Development @update:develop="handleDevelopUpdate" />
+      <AgreemComp @update:agreem="handleAgreemUpdate" />
+    </div>
+    <div>
+      <q-checkbox style=" margin: 25px;" v-model="check" dense val="teal" color="primary" :label="$t('btn7')" />
+    </div>
   </div>
-
-  <div class="container">
-    <q-btn type="submit" :loading="submitting" outline label="Guardar" class="q-mt-md" icon="save" color="primary"
+  <div style=" margin: 25px;" class="met">
+    <q-btn type="submit" :loading="submitting" flat label="Guardar" class="men" color="primary"
       @click="save">
       <template v-slot:loading>
         <q-spinner-facebook />
       </template>
     </q-btn>
-    <q-btn label="Cancelar" outline class="q-mt-md" color="negative"></q-btn>
+    <q-btn label="Cancel" flat color="negative"/>
   </div>
 </template>
 
@@ -75,8 +76,6 @@ async function save() {
     };
 
     const result = await crearActa.createActaRO(actaData);
-
-    console.log(result);
     submitting.value = false;
   } catch (error) {
     console.error(error);
@@ -149,10 +148,8 @@ h2 {
 }
 
 .container {
-  margin: 20px;
-  flex-direction: row;
-  display: flex;
-  flex-wrap: wrap;
+  margin: 10px;
+  padding: 10px;
 }
 
 .input {
@@ -160,5 +157,17 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
+}
+.met {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.met button {
+  width: 50%;
+  box-sizing: border-box;
 }
 </style>
