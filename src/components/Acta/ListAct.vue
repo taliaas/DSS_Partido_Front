@@ -7,12 +7,11 @@
             @click="view = !view" /></q-td>
       </template>
       <template #body-cell-update>
-        <q-td style="text-align: center"><q-btn flat color="secondary" icon="update" size="10px"
-            @click="addProcced" /></q-td>
+        <q-td style="text-align: center"><q-btn flat color="secondary" icon="update" size="10px" /></q-td>
       </template>
       <template #body-cell-delete>
         <q-td style="text-align: center"><q-btn flat color="secondary" icon="delete" size="10px"
-            @click="persistent = true" /></q-td>
+          @click="alert" /></q-td>
       </template>
       <template #body-cell-add>
         <q-td style="text-align: center"><q-btn flat icon="add" size="10px" @click="addProcced" /></q-td>
@@ -25,19 +24,37 @@
         </q-input>
       </template>
     </q-table>
-
   </div>
 </template>
 
 <script setup>
 import ActaService from "src/services/ActaService";
 import { ref, onMounted } from "vue";
+import { useQuasar } from 'quasar'
+import { useI18n } from 'vue-i18n'
 
 const filter = ref("");
 const loading = ref(true);
 const selectedRow = ref(null);
 const view = ref(false);
 const persistent = ref(false);
+
+const { t } = useI18n()
+const $q = useQuasar()
+
+function alert() {
+  $q.dialog({
+    title: t('remove'),
+    message: t('delete'),
+    persistent: true
+  }).onOk(() => {
+    // console.log('OK')
+  }).onCancel(() => {
+    // console.log('Cancel')
+  }).onDismiss(() => {
+    // console.log('I am triggered on both OK and Cancel')
+  })
+}
 
 const columns = [
   {
@@ -66,10 +83,6 @@ function handleRowClick(evt, row, index) {
   console.log(view.value);
 
   return row.name;
-}
-
-function addProcced() {
-  window.location.href = "http://localhost:9000/index/actaordinaria";
 }
 const rows = ref([]);
 
