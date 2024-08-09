@@ -1,5 +1,4 @@
 <template>
-
   <form>
     <div class="asis">
       <q-input v-model.number="model" type="number" :label="$t('pres')" filled
@@ -12,11 +11,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineEmits, watchEffect } from 'vue';
 
 
 const model = ref("1");
 const model1 = ref("1");
+
+const emit = defineEmits(['update:pres', 'update:aus'])
+
+watchEffect (() => {
+  emit('update:pres', model.value),
+  emit('update:aus', model1.value)
+});
 </script>
 
 <style scoped>

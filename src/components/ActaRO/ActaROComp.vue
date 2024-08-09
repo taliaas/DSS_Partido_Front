@@ -4,9 +4,9 @@
   </div>
   <div class="input">
     <InfoActaComp @update:nucleo="handleNucleoUpdate" @update:area="handleAreaUpdate" />
-    <AsistenciaComp />
-    <DateComp />
-    <TimeComp />
+    <AsistenciaComp @update:pres="handlePresUpdate" @update:aus="handleAusUpdate"/>
+    <DateComp @update:date="handleDateUpdate"/>
+    <TimeComp @update:time="handleTimeUpdate"/>
     <q-separator />
   </div>
   <div>
@@ -44,11 +44,12 @@ import TimeComp from './TimeComp.vue';
 const submitting = ref(false);
 const teal = ref(true);
 
-function save() {
-  window.location.href = "http://localhost:9000/index/actapolitica";
-}
 let nucleo = ref("");
 let area = ref("");
+let aus = ref("")
+let pres = ref("")
+let time = ref("")
+let date = ref("")
 
 function handleNucleoUpdate(value) {
   console.log(value)
@@ -58,6 +59,26 @@ function handleNucleoUpdate(value) {
 function handleAreaUpdate(value) {
   console.log(value)
   area.value = value;
+}
+
+function handlePresUpdate(value) {
+  console.log(value)
+  pres.value = value;
+}
+
+function handleAusUpdate(value) {
+  console.log(value)
+  aus.value = value;
+}
+
+function handleDateUpdate(value) {
+  console.log(value)
+  date.value = value;
+}
+
+function handleTimeUpdate(value) {
+  console.log(value)
+  time.value = value;
 }
 </script>
 

@@ -5,11 +5,16 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits, watchEffect } from 'vue';
 
 const time = ref("");
 const options = ref([]);
 
+const emit = defineEmits(['update:time'])
+
+watchEffect(() => {
+  emit('update:time', time.value)
+});
 </script>
 
 <style scoped>
