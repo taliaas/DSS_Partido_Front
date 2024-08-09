@@ -1,7 +1,7 @@
 <template>
   <div style=" margin: 25px;">
 
-    <q-table flat bordered title="Acuerdo(s)" :rows="rows" :columns="columns" :filter="filter" :loading="loading"
+    <q-table flat bordered :title="$t('agree')" :rows="rows" :columns="columns" :filter="filter" :loading="loading"
       no-data-label="No hay datos" row-key="index" :rows-per-page-options="[0]">
 
       <template v-slot:top-right>
@@ -12,7 +12,7 @@
     </q-table>
   </div>
 
-  <div>
+  <div class="dialo">
     <q-dialog v-model="medium">
       <q-card style="width: 700px; max-width: 80vw">
         <q-card-section>
@@ -33,7 +33,9 @@
 
 <script setup>
 import { ref } from "vue";
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const medium = ref(false);
 const loading = ref(false);
 const filter = ref("");
@@ -46,7 +48,7 @@ const columns = [
   {
     name: 'desc',
     required: true,
-    label: 'Descripción',
+    label: "Descripcion",
     align: 'left',
     field: row => row.desc,
     format: val => `${val}`,

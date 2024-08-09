@@ -16,12 +16,14 @@ defineOptions({
 
 <style scoped>
 .main {
-  background-image: url("src/img/indexPage.jpg");
+  background-image: url("src/img/prueb.png");
+
 }
 
 .comp {
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(5px);
 }
 </style>

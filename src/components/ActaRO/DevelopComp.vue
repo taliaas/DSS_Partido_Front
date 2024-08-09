@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <h2>Desarrollo</h2>
-    <q-input class="inp" clearable outlined autogrow v-model="model" />
+    <h2>{{ $t("des") }}</h2>
+    <q-input class="comp" clearable outlined autogrow v-model="model" />
+
   </div>
 </template>
 
@@ -19,7 +20,11 @@ h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.container{
-  margin: 25px;
+.container {
+  margin: 30px;
+}
+
+.comp {
+width: 100%;
 }
 </style>
