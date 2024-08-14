@@ -33,14 +33,29 @@ const routes = [
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
       {
-        path: "actas",
-        name: "actas",
+        path: "acta",
+        name: "acta",
         component: () => import("src/pages/ActaPage.vue"),
       },
       {
-        path: "minutes",
-        name: "minutes",
+        path: "listRO",
+        name: "listRO",
+        component: () => import("src/pages/ListActaRO.vue"),
+      },
+      {
+        path: "listCP",
+        name: "listCP",
+        component: () => import("src/pages/ListActaCP.vue"),
+      },
+      {
+        path: "actaordinaria",
+        name: "actaordinaria",
         component: () => import("src/pages/ActaROPage.vue"),
+      },
+      {
+        path: "actapolitica",
+        name: "actapolitica",
+        component: () => import("src/pages/ActaPolitPage.vue"),
       },
       {
         path: "balance",
@@ -51,11 +66,6 @@ const routes = [
         path: "graph",
         name: "graph",
         component: () => import("src/pages/GraphPage.vue"),
-      },
-      {
-        path: "actapolitica",
-        name: "actaCP",
-        component: () => import("src/pages/ActaPolitPage.vue"),
       },
       {
         path: "user",
@@ -87,5 +97,28 @@ const routes = [
     component: () => import("pages/ErrorNotFound.vue"),
   },
 ];
+const userRole = 'admin'
+// Función para verificar el rol del usuario antes de permitir el acceso a una ruta
+function checkUserRole(to, from, next) {
+  switch (to.path) {
+    case '/index':
+      if (userRole !== 'admin') {
+        next('/'); // Redirige a la pagina de login si el rol no es admin
+      } else {
+        next(); // Permite el acceso si el rol es admin
+      }
+      break;
+    // Puedes annadir mas condiciones aqui para otras rutas
+    default:
+      next(); // Permite el acceso a todas las demas rutas
+  }
+}
+
+// Itera sobre las rutas y asigna el guardia de ruta
+routes.forEach(route => {
+  route.beforeEnter = function(to, from, next) {
+    checkUserRole(to, from, next);
+  };
+});
 
 export default routes;

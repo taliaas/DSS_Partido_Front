@@ -13,11 +13,11 @@
     <div class="tablas">
       <MembersComp @update:miembros="handleMembersUpdate" />
       <OrdenTable @update:order="handleOrdersUpdate" />
-      <Development @update:develop="handleDevelopUpdate" />
+      <Development @update:dev="handleDevelopUpdate" />
       <AgreemComp @update:agreem="handleAgreemUpdate" />
     </div>
     <div>
-      <q-checkbox style=" margin: 25px;" v-model="check" dense val="teal" color="primary" :label="$t('btn7')" />
+      <q-checkbox style=" margin: 25px;" v-model="check" dense val="1" color="primary" :label="$t('btn7')" />
     </div>
   </div>
   <div style=" margin: 25px;" class="met">
@@ -53,14 +53,14 @@ let time = ref("")
 let date = ref("")
 let memb = ref("")
 let order = ref("")
-let develop = ref("")
+let dev = ref("")
 let agreem = ref("")
 
 async function save() {
   const crearActa = new ActaService();
   try {
     submitting.value = true;
-
+    console.log(check.value)
     const actaData = {
       nucleo: nucleo.value,
       area: area.value,
@@ -70,9 +70,9 @@ async function save() {
       day: date.value,
       members: memb.value,
       order: order.value,
-      development: develop.value,
+      development: dev.value,
       agreements: agreem.value,
-      cp: check.value
+      cp: 0 //tomar el valor del check.value
     };
 
     const result = await crearActa.createActaRO(actaData);
@@ -126,7 +126,7 @@ function handleOrdersUpdate(value) {
 
 function handleDevelopUpdate(value) {
   console.log(value)
-  develop.value = value;
+  dev.value = value;
 }
 
 function handleAgreemUpdate(value) {

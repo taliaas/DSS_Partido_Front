@@ -84,7 +84,7 @@ const linksList = [
   {
     title: "p1",
     icon: "collections_bookmark",
-    link: "/index/actas",
+    link: "/index/acta",
   },
   {
     title: "p2",

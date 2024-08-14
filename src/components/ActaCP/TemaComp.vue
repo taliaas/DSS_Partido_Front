@@ -1,6 +1,6 @@
 <template>
   <div style=" margin-left: 25px; margin-right: 25px;">
-    <h2>{{ $t("des") }}</h2>
+    <h2>{{ $t("tema") }}</h2>
     <q-input  class="inp" clearable outlined autogrow v-model="model1" />
   </div>
 </template>
@@ -10,10 +10,10 @@ import { ref, defineEmits, watchEffect } from "vue";
 
 const model1 = ref("");
 
-const emit = defineEmits(['update:dev'])
+const emit = defineEmits(['update:tema'])
 
 watchEffect(() => {
-  emit('update:dev', model1.value)
+  emit('update:tema', model1.value)
 });
 </script>
 

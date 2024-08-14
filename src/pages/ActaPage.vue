@@ -1,17 +1,13 @@
 <template>
-  <q-page class="container">
-    <div class="comp">
-      <ListAct></ListAct>
-    </div>
-  </q-page>
+  <div>
+    <TableActa />
+  </div>
 </template>
 
 <script setup>
-import ListAct from "src/components/Acta/ListAct.vue";
+import TableActa from 'src/components/Acta/TableActa.vue';
 
-defineOptions({
-  name: 'ActaPage'
-});
+
 </script>
 
 <style scoped></style>
