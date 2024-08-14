@@ -38,16 +38,6 @@ const routes = [
         component: () => import("src/pages/ActaPage.vue"),
       },
       {
-        path: "listRO",
-        name: "listRO",
-        component: () => import("src/pages/ListActaRO.vue"),
-      },
-      {
-        path: "listCP",
-        name: "listCP",
-        component: () => import("src/pages/ListActaCP.vue"),
-      },
-      {
         path: "actaordinaria",
         name: "actaordinaria",
         component: () => import("src/pages/ActaROPage.vue"),

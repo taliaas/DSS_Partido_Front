@@ -21,18 +21,18 @@
     </div>
   </div>
   <div style=" margin: 25px;" class="met">
-    <q-btn type="submit" :loading="submitting" flat label="Guardar" class="men" color="primary"
-      @click="save">
+    <q-btn type="submit" :loading="submitting" flat label="Guardar" class="men" color="primary" @click="save">
       <template v-slot:loading>
         <q-spinner-facebook />
       </template>
     </q-btn>
-    <q-btn label="Cancel" flat color="negative"/>
+    <q-btn label="Cancel" flat color="negative" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import ActaService from "src/services/ActaService";
 import InfoActaComp from "src/components/ActaRO/InfoActaComp.vue";
 import OrdenTable from "src/components/ActaRO/OrdenTable.vue";
@@ -43,8 +43,10 @@ import AsistenciaComp from "./AsistenciaComp.vue";
 import DateComp from "./DateComp.vue";
 import TimeComp from './TimeComp.vue';
 
+const router = useRouter();
 const submitting = ref(false);
 const check = ref(true);
+
 let nucleo = ref("");
 let area = ref("");
 let aus = ref("")
@@ -56,11 +58,18 @@ let order = ref("")
 let dev = ref("")
 let agreem = ref("")
 
+const valor = ref(0);
+// Función que se ejecuta cuando el estado del checkbox cambia
+function asignarValor(valorCheck) {
+  valor.value = valorCheck ? 1 : 0;
+  console.log(valor)
+}
 async function save() {
   const crearActa = new ActaService();
   try {
     submitting.value = true;
-    console.log(check.value)
+    asignarValor(check.value)
+    console.log(valor.value)
     const actaData = {
       nucleo: nucleo.value,
       area: area.value,
@@ -72,13 +81,21 @@ async function save() {
       order: order.value,
       development: dev.value,
       agreements: agreem.value,
-      cp: 0 //tomar el valor del check.value
+      cp: valor.value //tomar el valor del check.value
     };
 
-    const result = await crearActa.createActaRO(actaData);
+    const response = await crearActa.createActaRO(actaData);
     submitting.value = false;
+    alert('Exitoso');
+    if (check.value) { //preguntar a alberto para solucionar que solo entre aki cuando este bien el formulario, si da error no
+      router.replace({ name: 'actapolitica' });
+    }
   } catch (error) {
     console.error(error);
+    if (error.message.includes('500')) {
+      alert('Hubo un error interno del servidor. Por favor, inténtalo de nuevo más tarde.');
+    }
+    alert('Ocurrió un error al intentar crear la Acta. Por favor, inténtalo de nuevo.');
   } finally {
     submitting.value = false;
   }
@@ -157,6 +174,7 @@ h2 {
   flex-wrap: wrap;
   margin: 20px;
 }
+
 .met {
   width: 400px;
   display: flex;

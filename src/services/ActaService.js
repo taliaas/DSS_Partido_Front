@@ -35,14 +35,14 @@ export default class ActaService {
             body: JSON.stringify(actaROData),
           });
 
-          if (response.status !== 200) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          if (!response.ok) { // response.ok será false si el status no es 200-299
+            let errorMessage = `HTTP error! status: ${response.status}`;
+              if (response.status === 500) {
+                errorMessage += ' - El servidor encontró una situación inesperada que le impidió cumplir con la solicitud.';
+              }
+            throw new Error(errorMessage);
           }
-          if(response.status == 404)
-            console.log('El Acta de Reunión Ordinaria que desea agregar ya existe');
-          else if(response.status !== 201){
-            console.error('Se ha creado el Acta', error);
-          }
+
           const actaRO = await response.json();
           console.log(actaRO);
           return actaRO;
