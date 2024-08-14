@@ -20,22 +20,4 @@ export default class BalanceService {
     }
   }
 
-  async deleteBalance(idBalance) {
-    try {
-      const response = await fetch(`http://localhost:5000/balance/${idBalance}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      console.log('La información del balance fue eliminado exitosamente');
-      return response.data;
-    } catch (error) {
-      console.error('Error al eliminar el balance deseado:', error);
-    }
-  }
 }

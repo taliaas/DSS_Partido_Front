@@ -2,11 +2,9 @@
   <div class="q-pa-md">
     <q-table title="Actas del Partido" :rows="rows" :columns="columns" row-key="name" :filter="filter"
       :loading="loading" @row-click="handleRowClick">
+      
       <template #body-cell-view>
-        <q-td style="text-align: left" auto-width>
-          <q-btn flat color="secondary" :icon="expand ? 'visibility' : 'visibility_off'" size="10px"
-            @click="expand = !expand" />
-        </q-td>
+        <q-td style="text-align: left" auto-width> <q-btn flat color="secondary" icon="visibility" size="10px" /></q-td>
       </template>
       <template #body-cell-update>
         <q-td style="text-align: left"><q-btn flat color="secondary" icon="update" size="10px" /></q-td>
@@ -87,7 +85,7 @@ function handleRowClick(evt, row, index) {
 }
 const rows = ref([]);
 
-onMounted (loadActaROData);
+onMounted(loadActaROData);
 async function loadActaROData() {
   const acta = new ActaService();
   try {
@@ -112,7 +110,7 @@ async function deleteActa(actaId) {
     .catch(error => {
       console.error('Error al eliminar el acta:', error);
     });
-    loadActaROData();
+  loadActaROData();
 }
 </script>
 

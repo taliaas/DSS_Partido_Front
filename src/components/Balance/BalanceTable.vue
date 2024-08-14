@@ -15,8 +15,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { exportFile } from 'quasar'
+import BalanceService from 'src/services/BalanceService';
 
 const filter = ref("");
 const loading = ref(false);
@@ -24,28 +25,21 @@ const selectedRow = ref(null);
 
 const columns = [
   {
-    name: 'name',
+    name: 'id',
     required: true,
-    label: 'Núcleo',
+    label: 'No. ',
     align: 'left',
-    field: row => row.name,
+    field: row => row.idBal,
     sortable: true
-  },
-  { name: 'order', align: 'center', label: 'Orden del Día', field: 'order' },
-  { name: 'part', align: 'center', label: 'Participantes', field: 'part' },
-  { name: 'agreem', align: 'center', label: 'Total de Acuerdos', field: 'agreem' },
-  { name: 'crec', align: 'center', label: 'Crecimiento', field: 'crec' },
-  { name: 'cp', align: 'center', label: 'Círculo Político', field: 'cp' },
-  { name: 'cp-agreem', align: 'center', label: 'Acuerdos de Círculo Político', field: 'cp-agreem' },
+  },{ name: 'core', align: 'center', label: 'Núcleo', field: 'core',sortable: true },
+  { name: 'order', align: 'center', label: 'Orden del Día', field: 'order', sortable: true },
+  { name: 'part', align: 'center', label: 'Participantes', field: 'participants',sortable: true },
+  { name: 'agreem', align: 'center', label: 'Total de Acuerdos', field: 'agreements',sortable: true },
+  { name: 'crec', align: 'center', label: 'Crecimiento', field: 'crecim', sortable: true },
+  { name: 'cp', align: 'center', label: 'Círculo Político', field: 'cp',sortable: true },
+  { name: 'cp-agreem', align: 'center', label: 'Acuerdos de Círculo Político', field: 'agreements_cp', sortable: true },
 ]
-const rows = [
-  {
-    name: "jnx",
-    nucleo: "xns",
-    area: "snx",
-    fet: "s",
-  }
-]
+const rows = ref([])
 
 function handleRowClick(evt, row, index) {
   selectedRow.value = JSON.stringify(row.name);
@@ -92,6 +86,19 @@ function exportTable() {
       color: 'negative',
       icon: 'warning'
     })
+  }
+}
+
+onMounted (loadBlalance);
+async function loadBlalance() {
+  const bal = new BalanceService();
+  try {
+    const balance = await bal.getBalance();
+    rows.value = balance;
+    loading.value = false;
+  } catch (error) {
+    console.error('Error al cargar el balance', error);
+    loading.value = false;
   }
 }
 </script>
