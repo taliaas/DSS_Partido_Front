@@ -45,8 +45,10 @@
 </template>
 
 <script setup>
-import AuthService from "src/services/AuthService";
 import { ref } from "vue";
+import { LocalStorage } from 'quasar'
+import UserService from "src/services/UserService.vue";
+import AuthService from "src/services/AuthService";
 
 const name = ref(null);
 const password = ref(null);
@@ -68,7 +70,10 @@ const authUser = async () => {
     onReset()
   }
 }
+const us = new UserService();
+const user = us.getUser(name.value);
 
+LocalStorage.set('user', user)
 </script>
 
 <style scoped>

@@ -1,4 +1,4 @@
-export default class CreateService {
+export default class UserService {
 
   async createUser(userData) {
     try {
@@ -23,7 +23,7 @@ export default class CreateService {
       console.error('Error:', error);
     }
   }
-  
+
   async updateUser(idUser, userData) {
     try {
       const response = await fetch(`http://localhost:5000/user/${idUser}`, userData, {
@@ -46,6 +46,7 @@ export default class CreateService {
   async deleteUser(idUser) {
     try {
       const response = await fetch(`http://localhost:5000/user/${idUser}`, {
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -59,6 +60,49 @@ export default class CreateService {
       return response.data;
     } catch (error) {
       console.error('Error al eliminar el usuario deseado:', error);
+    }
+    
+  }
+
+  async getUser(username) {
+      try {
+        const response = await fetch(`http://localhost:5000/user${username}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.status !== 200) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const user = await response.json();
+        console.log(user);
+        return actaCP;
+      } catch (error) {
+        console.error('Error al recuperar el usuario', error);
+      }
+    }
+
+  async getAll() {
+    try {
+      const response = await fetch("http://localhost:5000/user/", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const users = await response.json();
+      console.log(users);
+      return users;
+    } catch (error) {
+      console.error('Error al recuperar los usuarios', error);
     }
   }
 }

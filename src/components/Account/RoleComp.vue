@@ -1,14 +1,9 @@
 <template>
   <div class="comp">
     <q-form @submit.prevent.stop="onSubmit">
-      <p>este es para config de administrador</p>
-      <h2>{{ $t('asign') }}</h2>
-
       <q-select v-model="selectedRole" :options="options" :label="$t('rol')" />
-
-      <div class="cord">
-        <q-btn type="submit" :label="$t('save')" color="primary" class="full-width" />
-      </div>
+      <q-select v-model="selectedArea" :options="options" :label="$t('area')" />
+      <q-select v-model="selectedNucleo" :options="options" :label="$t('nucleo')" />
     </q-form>
   </div>
 </template>
@@ -47,8 +42,8 @@ function onSubmit() {
 
 <style scoped>
 .comp {
-  width: 300px;
-  margin: 25px;
+  width: 400px;
+  margin: 10px;
 }
 
 h2 {

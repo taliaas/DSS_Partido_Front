@@ -1,11 +1,12 @@
 <template>
   <div>
-    <ListAccount />
+    <AddComp />
   </div>
 </template>
 
 <script setup>
-import ListAccount from 'src/components/Account/ListAccount.vue';
+import AddComp from 'src/components/Account/AnnadirAcc.vue';
+
 
 </script>
 

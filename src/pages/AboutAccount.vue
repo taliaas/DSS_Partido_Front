@@ -1,12 +1,11 @@
 <template>
   <div>
-    <ListAccount />
+    <UserComp></UserComp>
   </div>
 </template>
 
 <script setup>
-import ListAccount from 'src/components/Account/ListAccount.vue';
-
+import UserComp from 'src/components/Account/UserComp.vue';
 </script>
 
 <style scoped></style>

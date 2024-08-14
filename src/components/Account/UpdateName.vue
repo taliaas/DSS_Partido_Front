@@ -8,9 +8,6 @@
       (val) =>
         (val.length < 13 && val.length > 4) || 'Por favor introduce entre 5 y 12 caracteres',]" />
 
-      <div class="cord">
-        <q-btn type="submit" :label="$t('save')" color="primary" class="full-width" />
-      </div>
     </q-form>
   </div>
 </template>

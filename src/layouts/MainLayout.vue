@@ -28,7 +28,7 @@
       @mouseout="miniState = true" :width="200" :breakpoint="500" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
       <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
 
-        <q-list style="height: 665px;">
+        <q-list style="height: 640px;">
           <q-item-label header>
             {{ $t("men") }}
           </q-item-label>
@@ -38,12 +38,20 @@
         </q-list>
         <q-separator></q-separator>
 
-        <q-item clickable v-close-popup href="http://localhost:9000/index/user">
+        <q-item clickable v-close-popup href="http://localhost:9000/index/aboutuser">
           <q-item-section side>
             <q-icon name="person" size="sm" class="text-primary rounded-borders" />
           </q-item-section>
           <q-item-section>
             <q-item-label>{{ $t("btn5") }}</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-close-popup href="http://localhost:9000/index/user">
+          <q-item-section side>
+            <q-icon name="settings" size="sm" class="text-primary rounded-borders" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>{{ $t("btn4") }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-scroll-area>
@@ -95,11 +103,6 @@ const linksList = [
     title: "p3",
     icon: "timeline",
     link: "/index/graph",
-  },
-  {
-    title: "p4",
-    icon: "event",
-    link: "/index/calendar"
   }
 ]
 

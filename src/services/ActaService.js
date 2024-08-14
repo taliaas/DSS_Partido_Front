@@ -91,4 +91,5 @@ export default class ActaService {
           console.error('Error al recuperar las Acta de Reunión Ordinaria', error);
         }
       }
+
 }

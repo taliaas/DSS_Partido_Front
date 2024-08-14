@@ -1,13 +1,13 @@
 <template>
   <q-page class="main">
     <div class="absolute-full comp">
-      <Registrer />
+      <RegisterComp />
     </div>
   </q-page>
 </template>
 
 <script setup>
-import Registrer from "src/components/Log/Regist/RegistrerComp.vue";
+import RegisterComp from "src/components/Accesos/RegisterComp.vue";
 
 defineOptions({
   name: 'RegistrerPage'

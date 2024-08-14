@@ -14,14 +14,9 @@ const routes = [
         component: () => import("pages/AboutPage.vue"),
       },
       {
-        path: "login",
-        name: "login",
-        component: () => import("pages/LoginPage.vue"),
-      },
-      {
         path: "sigin",
         name: "sigin",
-        component: () => import("src/pages/RegistrerPage.vue"),
+        component: () => import("pages/RegisterPage.vue"),
       },
     ],
   },
@@ -61,6 +56,16 @@ const routes = [
         path: "user",
         name: "user",
         component: () => import("src/pages/UserPage.vue"),
+      },
+      {
+        path: "adduser",
+        name: "adduser",
+        component: () => import("src/pages/AggAcount.vue"),
+      },
+      {
+        path: "aboutuser",
+        name: "aboutuser",
+        component: () => import("src/pages/AboutAccount.vue"),
       },
       {
         path: "updser",
