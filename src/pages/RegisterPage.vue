@@ -1,13 +1,11 @@
 <template>
   <q-page class="main">
     <div class="absolute-full comp">
-      <RegisterComp />
     </div>
   </q-page>
 </template>
 
 <script setup>
-import RegisterComp from "src/components/Accesos/RegisterComp.vue";
 
 defineOptions({
   name: 'RegistrerPage'
@@ -16,7 +14,6 @@ defineOptions({
 
 <style scoped>
 .main {
-  background-image: url("src/img/prueb.png");
 }
 
 .comp {

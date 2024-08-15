@@ -2,9 +2,9 @@
   <div class="q-pa-md">
     <q-table title="Actas del Partido" :rows="rows" :columns="columns" row-key="name" :filter="filter"
       :loading="loading" @row-click="handleRowClick">
-      
+
       <template #body-cell-view>
-        <q-td style="text-align: left" auto-width> <q-btn flat color="secondary" icon="visibility" size="10px" /></q-td>
+        <q-td style="text-align: left" auto-width> <q-btn flat color="secondary" icon="visibility" size="10px" @click="view"/></q-td>
       </template>
       <template #body-cell-update>
         <q-td style="text-align: left"><q-btn flat color="secondary" icon="update" size="10px" /></q-td>
@@ -34,11 +34,11 @@ import { ref, onMounted, watch, watchEffect } from "vue";
 import { useQuasar } from 'quasar'
 import { useI18n } from 'vue-i18n'
 import DeleteActa from "src/services/DeleteActa";
+import ActaView from "../../pages/ActaView.vue";
 
 const filter = ref("");
 const loading = ref(true);
 const selectedRow = ref(null);
-const expand = ref(false);
 
 const { t } = useI18n()
 const $q = useQuasar()
@@ -77,12 +77,6 @@ const columns = [
   { name: 'update', align: 'left', label: 'Modificar', field: 'update' },
   { name: 'delete', align: 'left', label: 'Eliminar', field: 'delete' },
 ]
-
-function handleRowClick(evt, row, index) {
-  selectedRow.value = JSON.stringify(row.id);
-  console.log(`Id de fila seleccionada: ${selectedRow.value}`);
-  return selectedRow;
-}
 const rows = ref([]);
 
 onMounted(loadActaROData);
@@ -111,6 +105,18 @@ async function deleteActa(actaId) {
       console.error('Error al eliminar el acta:', error);
     });
   loadActaROData();
+}
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+function handleRowClick(evt, row, index) {
+  selectedRow.value = JSON.stringify(row.id);
+  console.log(`Id de fila seleccionada: ${selectedRow.value}`);
+  return selectedRow.value;
+}
+function view(){
+  const id = selectedRow.value;
+  router.push({ name: 'ActaView', params: { id } });
 }
 </script>
 

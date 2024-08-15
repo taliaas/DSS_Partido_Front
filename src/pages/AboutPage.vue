@@ -1,10 +1,6 @@
 <template>
   <div class="q-px-lg q-py-md pp">
     <q-timeline color="secondary">
-      <q-timeline-entry heading >
-       <div style="font-size: 44px; font-family: Georgia, 'Times New Roman', Times, serif;"> {{ $t("info") }}</div>
-      </q-timeline-entry>
-
       <q-timeline-entry :title="$t('what')" icon="done_all">
         <div style="font-size: 16px;">{{ $t("text1") }}</div>
       </q-timeline-entry>

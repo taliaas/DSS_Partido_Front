@@ -1,3 +1,7 @@
+import AboutPage from "src/pages/AboutPage.vue";
+import HomePage from "src/pages/HomePage.vue";
+import RegisterPage from "src/pages/RegisterPage.vue";
+
 const routes = [
   {
     path: "/",
@@ -6,17 +10,17 @@ const routes = [
     children: [
       {
         path: "",
-        component: () => import("pages/HomePage.vue"),
+        component: HomePage
       },
       {
         path: "about",
         name: "about",
-        component: () => import("pages/AboutPage.vue"),
+        component: AboutPage
       },
       {
         path: "sigin",
         name: "sigin",
-        component: () => import("pages/RegisterPage.vue"),
+        component: RegisterPage
       },
     ],
   },
@@ -41,6 +45,11 @@ const routes = [
         path: "actapolitica",
         name: "actapolitica",
         component: () => import("src/pages/ActaPolitPage.vue"),
+      },
+      {
+        path: '/details/:id',
+        name: "ActaView",
+        component: () => import("src/pages/ActaView.vue"),
       },
       {
         path: "balance",

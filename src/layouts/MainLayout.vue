@@ -28,7 +28,7 @@
       @mouseout="miniState = true" :width="200" :breakpoint="500" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
       <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }">
 
-        <q-list style="height: 640px;">
+        <q-list class="tam">
           <q-item-label header>
             {{ $t("men") }}
           </q-item-label>
@@ -119,6 +119,10 @@ const change = (lang) => {
   display: flex;
   justify-content: space-between;
   align-items: start;
+}
+
+.tam {
+  height: 85dvh;
 }
 
 .menu-list {

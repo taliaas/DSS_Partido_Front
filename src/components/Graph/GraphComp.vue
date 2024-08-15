@@ -24,7 +24,7 @@ let data = {
   labels: labels,
   datasets: [{
     label: props.indicador,
-    data: props.data,
+    data: [23, 45, 21, 10],
     borderColor: 'rgba(75, 192, 192, 1)',
     backgroundColor: 'rgba(75, 192, 192, 0.2)',
     borderWidth: 1

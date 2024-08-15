@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <q-card class="conteiner"
       style="background-color: rgba(255,255,255,0.6); border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0);">
       <q-form>
@@ -80,7 +80,9 @@ LocalStorage.set('user', user)
 .q-gutter-md {
   max-width: 500px;
 }
-
+.main {
+  background-image: url("../img/cuadros.jpg");
+}
 .butt {
   width: 160px;
   margin: 10px;
